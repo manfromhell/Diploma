@@ -344,6 +344,13 @@
 			<artifactId>telnetd-x</artifactId>
 			<version>2.1.1</version>
 		</dependency>
+
+		<dependency>
+			<groupId>org.kohsuke</groupId>
+			<artifactId>graphviz-api</artifactId>
+			<version>1.1</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<finalName>SADiploma</finalName>

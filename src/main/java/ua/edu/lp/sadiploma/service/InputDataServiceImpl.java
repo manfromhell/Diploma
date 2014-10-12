@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ua.edu.lp.sadiploma.dao.InputDataDao;
 import ua.edu.lp.sadiploma.entity.InputData;
 @Service
+@Transactional
 public class InputDataServiceImpl implements InputDataService {
 	
 	@Autowired
