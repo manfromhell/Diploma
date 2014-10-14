@@ -52,8 +52,7 @@ public class Solution {
 	}
 
 	/**
-	 * Get two different random numbers
-	 * 		and change them
+	 * Get two different random numbers and change them
 	 */
 	public void randomChange() {
 
@@ -70,7 +69,23 @@ public class Solution {
 			tmpBundle.setData(y, this.bundle.getData(y).getValue()
 					+ randomValue);
 
-		} while ((tmpBundle.hasRepeats()) || (tmpBundle.hasNegatives()));
+		} while (tmpBundle.hasNegatives());
+		this.bundle = (Bundle) tmpBundle.clone();
+
+		return;
+	}
+
+	public void mutation() {
+
+		Bundle tmpBundle = null;
+		do {
+			int x = new Random().nextInt(this.bundle.getDataLength()) + 1;
+			tmpBundle = new TreeBundle(bundle.getComponent());
+			int randomValue = new Random().nextInt(tmpBundle.getDataSum())
+					- (tmpBundle.getDataSum() / 2) + 1;
+			tmpBundle.setData(x, this.bundle.getData(x).getValue()
+					- randomValue);
+		} while (tmpBundle.hasNegatives());
 		this.bundle = (Bundle) tmpBundle.clone();
 
 		return;
@@ -115,8 +130,8 @@ public class Solution {
 			}
 		}
 
-//		System.out.println("gaps " + gaps + " repeats " + repeats
-//				+ " max number " + allNumbers.get(allNumbers.size() - 1));
+		// System.out.println("gaps " + gaps + " repeats " + repeats
+		// + " max number " + allNumbers.get(allNumbers.size() - 1));
 		this.solutionEnergy = gaps * GAPS_KOEF + repeats * REP_KOEF; // Complete
 		return this.solutionEnergy;
 	}
