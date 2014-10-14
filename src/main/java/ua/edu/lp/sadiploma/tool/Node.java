@@ -173,15 +173,14 @@ public class Node implements Component {
 		this.components = components;
 	}
 
-	public static Component generateTree(String parentCode, String data) {
+	public static Component generateTree(String parentCode) {
 		String[] parentCodeArray = parentCode.split("[, /;-]|(, )");
 		List<Integer> intParentCode = new ArrayList<Integer>();
-		String[] dataArray = data.split("[, /;-]|(, )");
-		int[] dataArrayInt = new int[dataArray.length];
+		int[] dataArrayInt = new int[parentCodeArray.length];
 
 		for (int i = 0; i < parentCodeArray.length; i++) {
 			intParentCode.add(Integer.parseInt(parentCodeArray[i]));
-			dataArrayInt[i] = Integer.parseInt(dataArray[i]);
+			dataArrayInt[i] = i+1;
 		}
 		System.out
 				.println(intParentCode + "\n" + Arrays.toString(dataArrayInt));

@@ -26,7 +26,11 @@ public class SimAnnealing implements Runnable {
 		double temperature = config.getInitialTemperature();
 		while (temperature > config.getFinalTemperature()) {
 			for (int i = 0; i < config.getIterationsAtTemperature(); i++) {
-				currentSolution.randomChange();
+				if (i % 2 == 0) {
+					currentSolution.mutation();
+				} else {
+					currentSolution.randomChange();
+				}
 			}
 			currentSolution.computeTargetFunction();
 			if (currentSolution.getSolutionEnergy() < bestSolution
@@ -40,7 +44,7 @@ public class SimAnnealing implements Runnable {
 			}
 			temperature *= config.getAlpha();
 		}
-		System.out.println("final temp: "+temperature);
+		System.out.println("final temp: " + temperature);
 	}
 
 	/**

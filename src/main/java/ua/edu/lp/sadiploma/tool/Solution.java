@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class Solution {
-	private static double GAPS_KOEF;
-	private static double REP_KOEF;
+	private double GAPS_KOEF;
+	private double REP_KOEF;
 	// private static BundleType bundleType = BundleType.RingBundle;
 
 	private double solutionEnergy = 0.0;
@@ -61,7 +61,7 @@ public class Solution {
 			int x = new Random().nextInt(this.bundle.getDataLength()) + 1;
 			int y = getExclusiveRandomNumber(this.bundle.getDataLength(), x);
 			tmpBundle = new TreeBundle(bundle.getComponent());
-			int randomValue = new Random().nextInt(tmpBundle.getDataSum() / 2) + 1;
+			int randomValue = new Random().nextInt(tmpBundle.getDataSum() / 2);
 			randomValue = (tmpBundle.getData(x).getValue() > tmpBundle.getData(
 					y).getValue()) ? randomValue : -randomValue;
 			tmpBundle.setData(x, this.bundle.getData(x).getValue()
@@ -161,6 +161,34 @@ public class Solution {
 	 */
 	public void setBundle(Bundle bundle) {
 		this.bundle = bundle;
+	}
+
+	/**
+	 * @return the gAPS_KOEF
+	 */
+	public double getGAPS_KOEF() {
+		return GAPS_KOEF;
+	}
+
+	/**
+	 * @param gAPS_KOEF the gAPS_KOEF to set
+	 */
+	public void setGAPS_KOEF(double gAPS_KOEF) {
+		GAPS_KOEF = gAPS_KOEF;
+	}
+
+	/**
+	 * @return the rEP_KOEF
+	 */
+	public double getREP_KOEF() {
+		return REP_KOEF;
+	}
+
+	/**
+	 * @param rEP_KOEF the rEP_KOEF to set
+	 */
+	public void setREP_KOEF(double rEP_KOEF) {
+		REP_KOEF = rEP_KOEF;
 	}
 
 }

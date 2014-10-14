@@ -15,46 +15,21 @@ public class Main {
 		 * Node(4,4,root)); System.out.println("Root!: "+root);
 		 * System.out.println("Found: "+root.findComponent(3));
 		 */
-		Component component = Node.generateTree("0,1,2,3,4,5,6",
-				"7 2 3 10 1 5 6");
+		Component component = Node.generateTree("0,1,2,3,4,5,6");
 		// Component component = Node.generateTree("0 1 1 1 1 1 1 1",
-		// "1,2,3,4,5,6,7,8");
 		// Component component = Node.generateTree("0 1 2 3 4 1 6 7",
-		// "1,2,3,4,5,6,7,8");
 		System.out.println(component);
 		Solution solution = new Solution(component, 1.0, 100.0);
 		solution.computeTargetFunction();
 		System.out.println(solution.getSolutionEnergy());
-		// component.findComponent(4).swap(component.findComponent(7));
-		// System.out.println(component);
-		/*
-		 * System.out.println(component.getSize());
-		 * System.out.println(Arrays.deepToString
-		 * (component.createTable(Arrays.asList
-		 * (0,1,1,1,3,3,4,6))).replaceAll("\\], \\[", "\\],\n \\["));
-		 * System.err.println(component);
-		 */
-
-		// System.out.println(component.getAllCombinations(component));
-		// System.out.println("All combinations: ");
-		// for (List<Component> list : component.getAllCombinations(component))
-		// {
-		// for (Component c : list) {
-		// System.out.print(c.getIndex() + " ");
-		// }
-		// System.out.println();
-		// }
 
 		System.out.println("All sums:");
 		Bundle bundle = new TreeBundle(component);
 		List<Integer> allCombinations = bundle.generateCombinations();
 		System.out.println(allCombinations);
 
-		// Solution solution = new Solution(component,1,100);
-		// solution.randomChange();
-		// System.out.println(solution.toString());
 		SimAnnealing simAnnealing = new SimAnnealing(component, new SAConfig(
-				100, 10, 0.99, 100, 1.0, 100.0));
+				100, 5, 0.99, 10, 1.0, 100.0));
 		ExecutorService executor = Executors.newFixedThreadPool(2);
 		executor.execute(simAnnealing);
 		executor.shutdown();
