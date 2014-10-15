@@ -19,6 +19,8 @@ import ua.edu.lp.sadiploma.service.OutputDataService;
 @Controller
 public class HomeController {
 	
+	Logger log = LoggerFactory.getLogger(this.getClass());
+
 	@Autowired
 	private InputDataService inputDataService;
 	
