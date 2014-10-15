@@ -44,7 +44,6 @@ public class SimAnnealing implements Runnable {
 			}
 			temperature *= config.getAlpha();
 		}
-		System.out.println("final temp: " + temperature);
 	}
 
 	/**
