@@ -10,9 +10,7 @@
 		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd">
-	<context:component-scan base-package="ua.edu.lp.sadiploma.entity" />
-	<context:component-scan base-package="ua.edu.lp.sadiploma.dao" />
-	<context:component-scan base-package="ua.edu.lp.sadiploma.service" />
+	<context:component-scan base-package="ua.edu.lp.sadiploma" />
 
 	<import resource="data-context.xml"/>
 </beans>
