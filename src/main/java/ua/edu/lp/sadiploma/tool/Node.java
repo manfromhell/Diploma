@@ -182,6 +182,8 @@ public class Node implements Component {
 			intParentCode.add(Integer.parseInt(parentCodeArray[i]));
 			dataArrayInt[i] = i+1;
 		}
+		System.out
+				.println(intParentCode + "\n" + Arrays.toString(dataArrayInt));
 		Component root = new Node(dataArrayInt[0]);
 		root.setParentCode(intParentCode);
 		for (int i = 1; i < dataArrayInt.length; i++) {
