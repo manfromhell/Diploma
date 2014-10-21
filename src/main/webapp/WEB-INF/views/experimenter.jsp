@@ -5,12 +5,8 @@
 <tiles:insertDefinition name="base-template">
 	<tiles:putAttribute name="body">
 
-		<form class="form-container">
-			<div class="form-title">
-				<h2>Set Data</h2>
-			</div>
 		<form:form commandName="inputData" action="setData" method="POST"
-			class="form-horizontal form-validate">
+			class="form-horizontal form-validate form-container">
 			<form:label path="parentCode" class="form-title">Parent code</form:label>
 			<form:input path="parentCode" value="0,1,2,3,4,5,6" class="form-field"/>
 			<br>
@@ -45,7 +41,6 @@
 			<br>
 			<form:button type="submit">CALCULATE</form:button>
 		</form:form>
-	</form>
 		
 	</tiles:putAttribute>
 </tiles:insertDefinition>
