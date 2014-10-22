@@ -20,11 +20,11 @@
 			<br>
 			<br>
 			<form:label path="initTemp" class="form-title">Initial temperature</form:label>
-			<form:input path="initTemp" value="10" class="form-field"/>
+			<form:input path="initTemp" value="100" class="form-field"/>
 			<br>
 			<br>
 			<form:label path="finalTemp" class="form-title">Final temperature</form:label>
-			<form:input path="finalTemp" value="100" class="form-field"/>
+			<form:input path="finalTemp" value="10" class="form-field"/>
 			<br>
 			<br>
 			<form:label path="alpha" class="form-title">Temperature change coefficient (alpha)</form:label>
