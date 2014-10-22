@@ -46,4 +46,9 @@ public class InputDataServiceImpl implements InputDataService {
 		return inputDataDao.findAll(InputData.class);
 	}
 
+	@Override
+	public List<InputData> findUnchecked(Integer count) {
+		return inputDataDao.findUnchecked(count,InputData.class);
+	}
+
 }

@@ -12,14 +12,14 @@ import ua.edu.lp.sadiploma.entity.OutputData;
 @Service
 @Transactional
 public class OutputDataServiceImpl implements OutputDataService {
-	
+
 	@Autowired
 	private OutputDataDao outputDataDao;
 
 	@Override
 	public void create(OutputData entity) {
 		outputDataDao.create(entity);
-		
+
 	}
 
 	@Override
@@ -30,7 +30,7 @@ public class OutputDataServiceImpl implements OutputDataService {
 	@Override
 	public void delete(OutputData entity) {
 		outputDataDao.delete(entity);
-		
+
 	}
 
 	@Override
@@ -41,6 +41,11 @@ public class OutputDataServiceImpl implements OutputDataService {
 	@Override
 	public List<OutputData> findAll() {
 		return outputDataDao.findAll(OutputData.class);
+	}
+
+	@Override
+	public List<OutputData> findUnchecked(Integer count) {
+		return outputDataDao.findUnchecked(count, OutputData.class);
 	}
 
 }

@@ -19,6 +19,7 @@ public class OutputData {
 	private Date startTime;
 	private Date finishTime;
 	private String resultNumbers;
+	private Double solutionEnergy;
 
 	public OutputData() {
 
@@ -63,6 +64,20 @@ public class OutputData {
 
 	public void setResultNumbers(String resultNumbers) {
 		this.resultNumbers = resultNumbers;
+	}
+
+	/**
+	 * @return the solutionEnergy
+	 */
+	public Double getSolutionEnergy() {
+		return solutionEnergy;
+	}
+
+	/**
+	 * @param solutionEnergy the solutionEnergy to set
+	 */
+	public void setSolutionEnergy(Double solutionEnergy) {
+		this.solutionEnergy = solutionEnergy;
 	}
 
 }

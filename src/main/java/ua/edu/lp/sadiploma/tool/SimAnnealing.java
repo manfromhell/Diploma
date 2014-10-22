@@ -1,6 +1,16 @@
 package ua.edu.lp.sadiploma.tool;
 
+import java.util.Date;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import ua.edu.lp.sadiploma.entity.OutputData;
+import ua.edu.lp.sadiploma.service.OutputDataService;
+
+@org.springframework.stereotype.Component
 public class SimAnnealing implements Runnable {
+
+	private OutputDataService dataService;
 	private SAConfig config;
 	private Component component;
 	// private static int TYPE;
@@ -11,13 +21,25 @@ public class SimAnnealing implements Runnable {
 	private Solution currentSolution;
 	private Solution bestSolution;
 
-	public SimAnnealing(Component component, SAConfig config) {
+	
+	@Autowired
+	public SimAnnealing(OutputDataService dataService) {
+		this.dataService = dataService;
+	}
+	
+	
+	public SimAnnealing(Component component, OutputDataService dataService, SAConfig config) {
+		this.dataService = dataService;
 		this.config = config;
 		this.component = component;
 	}
 
 	@Override
 	public void run() {
+		System.out.println(dataService.findAll());
+		OutputData entity = new OutputData();
+		entity.setStartTime(new Date());
+		
 		currentSolution = new Solution(component, config.getGapsKoef(),
 				config.getRepKoef());
 		bestSolution = new Solution(component, config.getGapsKoef(),
@@ -37,16 +59,24 @@ public class SimAnnealing implements Runnable {
 					.getSolutionEnergy()) {
 				bestSolution.setSolution(currentSolution);
 				bestSolution.computeTargetFunction();
-				System.out.println("new best energy: "
-						+ currentSolution.getSolutionEnergy());
 			} else {
 				currentSolution.setSolution(bestSolution);
 			}
 			temperature *= config.getAlpha();
 		}
-		System.out.println("final temp: " + temperature);
+//		System.out.println("final temp: " + temperature);
+
+		entity.setResultNumbers(bestSolution.getBundle().getData().getAllValues().toString());
+		entity.setFinishTime(new Date());
+		entity.setSolutionEnergy(bestSolution.getSolutionEnergy());
+		dataService.create(entity);
 	}
 
+	
+	
+	
+	
+	
 	/**
 	 * @return the bestSolution
 	 */

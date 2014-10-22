@@ -13,7 +13,8 @@ public interface GenericDao<T> {
 	void delete(T entity);
 
 	T findById(Class<T> entityClass, Long id);
-
+	
 	List<T> findAll(Class<T> entityClass);
 
+	List<T> findUnchecked(Integer count, Class<T> entityClass);
 }

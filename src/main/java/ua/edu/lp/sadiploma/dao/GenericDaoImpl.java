@@ -41,4 +41,15 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 
 	}
 
+	@Override
+	@SuppressWarnings("unchecked")
+	public List<T> findUnchecked(Integer count, Class<T> entityClass) {
+		List<T> result = null;
+		TypedQuery<T> query = (TypedQuery<T>) entityManager.createQuery("from "
+				+ entityClass.getName()+" where done=false");
+		query.setFirstResult(0);
+		query.setMaxResults(count);
+		result = query.getResultList();
+		return result;
+	}
 }

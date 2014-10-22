@@ -19,15 +19,13 @@ import ua.edu.lp.sadiploma.service.OutputDataService;
 @Controller
 public class HomeController {
 	
-	Logger log = LoggerFactory.getLogger(this.getClass());
+	private static final Logger log = LoggerFactory.getLogger(HomeController.class);
 
 	@Autowired
 	private InputDataService inputDataService;
 	
 	@Autowired
 	private OutputDataService outputDataService;
-	
-	//private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -52,6 +50,7 @@ public class HomeController {
 	
 	@RequestMapping(value="/setData", method = RequestMethod.POST)
 	public String writeInputData(@ModelAttribute("inputData") InputData inputData){
+		log.info(String.format("POST setdata: inputData = %s", inputData));
 		inputDataService.create(inputData);
 		return "main";
 	}

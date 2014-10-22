@@ -33,6 +33,11 @@ public interface GenericService<T> {
 	/**
 	 * @return list of elements
 	 */
+	List<T> findUnchecked(Integer count);
+
+	/**
+	 * @return list of elements
+	 */
 	List<T> findAll();
 
 }

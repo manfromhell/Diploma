@@ -28,8 +28,9 @@ public class Main {
 		List<Integer> allCombinations = bundle.generateCombinations();
 		System.out.println(allCombinations);
 
-		SimAnnealing simAnnealing = new SimAnnealing(component, new SAConfig(
-				100, 5, 0.99, 10, 1.0, 100.0));
+//		SimAnnealing simAnnealing = new SimAnnealing(component, new SAConfig(
+//				100, 5, 0.99, 10, 1.0, 100.0));
+		SimAnnealing simAnnealing = null;
 		ExecutorService executor = Executors.newFixedThreadPool(2);
 		executor.execute(simAnnealing);
 		executor.shutdown();

@@ -1,22 +1,54 @@
 package ua.edu.lp.sadiploma.tool;
 
+import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import ua.edu.lp.sadiploma.entity.InputData;
+import ua.edu.lp.sadiploma.service.InputDataService;
+import ua.edu.lp.sadiploma.service.OutputDataService;
 
 @Component
 public class ScheduleService {
 
-	Logger log = LoggerFactory.getLogger(this.getClass());
+	private static final Logger log = LoggerFactory
+			.getLogger(ScheduleService.class);
+	private ExecutorService executor = Executors.newFixedThreadPool(2);
 
-	@Scheduled(fixedDelay = 5000)
+	@Autowired
+	private InputDataService inputDataService;
+
+	@Autowired
+	private OutputDataService outputDataService;
+
+	@Scheduled(fixedDelay = 30000)
 	public void checkInputData() {
-		log.info("check db, delay = 5s");
+		log.info("check db, delay = 30s");
+		List<InputData> list = inputDataService.findUnchecked(2);
+		if (!executor.isTerminated()) {
+			for (InputData data : list) {
+
+				ua.edu.lp.sadiploma.tool.Component component = Node
+						.generateTree(data.getParentCode());
+
+				SAConfig config = new SAConfig(data.getInitTemp(),
+						data.getFinalTemp(), data.getAlpha(),
+						data.getIterationsPerTemperature(), data.getGapsCoef(),
+						data.getRepCoef());
+
+				data.setDone(true);
+				inputDataService.update(data);
+
+				SimAnnealing simAnnealing = new SimAnnealing(component, outputDataService, config);
+				executor.execute(simAnnealing);
+			}
+		}
 	}
 
-	@Scheduled(fixedDelay = 3000)
-	public void checkCurrentStatus() {
-		log.info("check buffer status, delay = 3s");
-	}
 }

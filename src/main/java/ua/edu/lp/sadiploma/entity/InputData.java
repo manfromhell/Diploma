@@ -19,7 +19,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class InputData {
 
 	private String parentCode;
-	private String marks;
+	// private String marks;
 	private int numberOfMarks;
 	private double initTemp;
 	private double finalTemp;
@@ -29,6 +29,7 @@ public class InputData {
 	private double repCoef;
 	private long timeForComputing;
 	private long timeForOutputCurrentRes;
+	private boolean done;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -74,21 +75,6 @@ public class InputData {
 	 */
 	public void setParentCode(String parentCode) {
 		this.parentCode = parentCode;
-	}
-
-	/**
-	 * @return the numbers
-	 */
-	public String getNumbers() {
-		return marks;
-	}
-
-	/**
-	 * @param numbers
-	 *            the numbers to set
-	 */
-	public void setNumbers(String numbers) {
-		this.marks = numbers;
 	}
 
 	/**
@@ -197,14 +183,13 @@ public class InputData {
 	 */
 	@Override
 	public String toString() {
-		return "InputData [parentCode=" + parentCode + ", numbers=" + marks
-				+ ", initTemp=" + initTemp + ", finalTemp=" + finalTemp
-				+ ", iterationsPerTemperature=" + iterationsPerTemperature
-				+ ", alpha=" + alpha + ", gapsCoef=" + gapsCoef + ", repCoef="
-				+ repCoef + ", timeForComputing=" + timeForComputing
-				+ ", timeForOutputCurrentRes=" + timeForOutputCurrentRes
-				+ ", id=" + id + ", created=" + created + ", outputData="
-				+ outputData + "]";
+		return "InputData [parentCode=" + parentCode + ", initTemp=" + initTemp
+				+ ", finalTemp=" + finalTemp + ", iterationsPerTemperature="
+				+ iterationsPerTemperature + ", alpha=" + alpha + ", gapsCoef="
+				+ gapsCoef + ", repCoef=" + repCoef + ", timeForComputing="
+				+ timeForComputing + ", timeForOutputCurrentRes="
+				+ timeForOutputCurrentRes + ", id=" + id + ", created="
+				+ created + ", outputData=" + outputData + "]";
 	}
 
 	/*
@@ -228,7 +213,6 @@ public class InputData {
 		temp = Double.doubleToLongBits(initTemp);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + iterationsPerTemperature;
-		result = prime * result + ((marks == null) ? 0 : marks.hashCode());
 		result = prime * result
 				+ ((outputData == null) ? 0 : outputData.hashCode());
 		result = prime * result
@@ -281,11 +265,6 @@ public class InputData {
 			return false;
 		if (iterationsPerTemperature != other.iterationsPerTemperature)
 			return false;
-		if (marks == null) {
-			if (other.marks != null)
-				return false;
-		} else if (!marks.equals(other.marks))
-			return false;
 		if (outputData == null) {
 			if (other.outputData != null)
 				return false;
@@ -315,18 +294,18 @@ public class InputData {
 	}
 
 	/**
-	 * @return the marks
+	 * @return the done
 	 */
-	public String getMarks() {
-		return marks;
+	public boolean getDone() {
+		return done;
 	}
 
 	/**
-	 * @param marks
-	 *            the marks to set
+	 * @param done
+	 *            the done to set
 	 */
-	public void setMarks(String marks) {
-		this.marks = marks;
+	public void setDone(boolean done) {
+		this.done = done;
 	}
 
 }
