@@ -10,10 +10,9 @@ public class ScheduleService {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
-	@Scheduled(fixedDelay = 60000)
+	@Scheduled(fixedDelay = 5000)
 	public void checkInputData() {
-		log.info("check db, delay = 1m");
-		
+		log.info("check db, delay = 5s");
 	}
 
 	@Scheduled(fixedDelay = 3000)
