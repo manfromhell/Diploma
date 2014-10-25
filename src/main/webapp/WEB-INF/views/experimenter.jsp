@@ -11,10 +11,6 @@
 			<form:input path="parentCode" value="0,1,2,3,4,5,6" class="form-field"/>
 			<br>
 			<br>
-			<form:label path="numberOfMarks" class="form-title">Number Of Marks</form:label>
-			<form:input path="numberOfMarks" value="7" class="form-field"/>
-			<br>
-			<br>
 			<form:label path="initTemp" class="form-title">Initial temperature</form:label>
 			<form:input path="initTemp" value="100" class="form-field"/>
 			<br>
@@ -24,7 +20,7 @@
 			<br>
 			<br>
 			<form:label path="alpha" class="form-title">Temperature change coefficient (alpha)</form:label>
-			<form:input path="alpha" value="0.5" class="form-field"/>
+			<form:input path="alpha" value="0.99" class="form-field"/>
 			<br>
 			<br>
 			<form:label path="iterationsPerTemperature" class="form-title">Iterations Per Temperature</form:label>
@@ -37,6 +33,14 @@
 			<br>
 			<form:label path="repCoef" class="form-title">Repeat Coefficient</form:label>
 			<form:input path="repCoef" value="100.0" class="form-field"/>
+			<br>
+			<br>
+			<form:label path="timeForComputing" class="form-title">Time for computing (s)</form:label>
+			<form:input path="timeForComputing" value="100" class="form-field"/>
+			<br>
+			<br>
+			<form:label path="timeForOutputCurrentRes" class="form-title">Time for output current result (s)</form:label>
+			<form:input path="timeForOutputCurrentRes" value="10" class="form-field"/>
 			<br>
 			<br>
 			<form:button type="submit">CALCULATE</form:button>

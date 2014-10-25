@@ -80,4 +80,12 @@ public class OutputData {
 		this.solutionEnergy = solutionEnergy;
 	}
 
+	public InputData getInputData() {
+		return inputData;
+	}
+
+	public void setInputData(InputData inputData) {
+		this.inputData = inputData;
+	}
+
 }

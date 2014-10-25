@@ -19,8 +19,6 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class InputData {
 
 	private String parentCode;
-	// private String marks;
-	private int numberOfMarks;
 	private double initTemp;
 	private double finalTemp;
 	private int iterationsPerTemperature;
@@ -283,14 +281,6 @@ public class InputData {
 		if (timeForOutputCurrentRes != other.timeForOutputCurrentRes)
 			return false;
 		return true;
-	}
-
-	public int getNumberOfMarks() {
-		return numberOfMarks;
-	}
-
-	public void setNumberOfMarks(int numberOfMarks) {
-		this.numberOfMarks = numberOfMarks;
 	}
 
 	/**

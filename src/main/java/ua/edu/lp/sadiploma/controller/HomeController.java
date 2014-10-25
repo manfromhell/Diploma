@@ -38,11 +38,12 @@ public class HomeController {
 	
 	@RequestMapping(value="/observer", method = RequestMethod.GET)
 	public String getObserverPage(Model model) {
+		model.addAttribute("inputList", inputDataService.findAll());
 		model.addAttribute("outputList", outputDataService.findAll());
 		return "observer";
 	}
 	
-	@RequestMapping(value = "/main", method = RequestMethod.GET)
+	@RequestMapping(value = {"/", "/main"}, method = RequestMethod.GET)
 	public String main(Model model){
 		//model.addAttribute("inputData", new InputData());
 		return "main";
@@ -51,6 +52,7 @@ public class HomeController {
 	@RequestMapping(value="/setData", method = RequestMethod.POST)
 	public String writeInputData(@ModelAttribute("inputData") InputData inputData){
 		log.info(String.format("POST setdata: inputData = %s", inputData));
+		inputData.setDone(false);
 		inputDataService.create(inputData);
 		return "main";
 	}
