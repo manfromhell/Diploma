@@ -27,9 +27,9 @@ public class ScheduleService {
 	@Autowired
 	private OutputDataService outputDataService;
 
-	@Scheduled(fixedDelay = 30000)
+	@Scheduled(fixedDelay = 15000)
 	public void checkInputData() {
-		log.info("check db, delay = 30s");
+		log.info("check db, delay = 15s");
 		List<InputData> list = inputDataService.findUnchecked(2);
 		if (!executor.isTerminated()) {
 			for (InputData data : list) {
@@ -45,7 +45,7 @@ public class ScheduleService {
 				data.setDone(true);
 				inputDataService.update(data);
 
-				SimAnnealing simAnnealing = new SimAnnealing(component, outputDataService, config);
+				SimAnnealing simAnnealing = new SimAnnealing(component, data, outputDataService, config);
 				executor.execute(simAnnealing);
 			}
 		}

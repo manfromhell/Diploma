@@ -2,14 +2,20 @@ package ua.edu.lp.sadiploma.tool;
 
 import java.util.Date;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ua.edu.lp.sadiploma.entity.InputData;
 import ua.edu.lp.sadiploma.entity.OutputData;
 import ua.edu.lp.sadiploma.service.OutputDataService;
 
 @org.springframework.stereotype.Component
 public class SimAnnealing implements Runnable {
 
+	private static final Logger log = LoggerFactory
+			.getLogger(SimAnnealing.class);
+	
 	private OutputDataService dataService;
 	private SAConfig config;
 	private Component component;
@@ -20,6 +26,7 @@ public class SimAnnealing implements Runnable {
 	// private Solution workingSolution;
 	private Solution currentSolution;
 	private Solution bestSolution;
+	private InputData inputData;
 
 	
 	@Autowired
@@ -28,17 +35,19 @@ public class SimAnnealing implements Runnable {
 	}
 	
 	
-	public SimAnnealing(Component component, OutputDataService dataService, SAConfig config) {
+	public SimAnnealing(Component component, InputData inputData, OutputDataService dataService, SAConfig config) {
 		this.dataService = dataService;
 		this.config = config;
 		this.component = component;
+		this.inputData = inputData;
 	}
 
 	@Override
 	public void run() {
-		System.out.println(dataService.findAll());
+		log.info(dataService.findAll().toString());
 		OutputData entity = new OutputData();
-		entity.setStartTime(new Date());
+		entity.setInputData(inputData);
+		entity.setStartTime(new Date(System.currentTimeMillis()));
 		
 		currentSolution = new Solution(component, config.getGapsKoef(),
 				config.getRepKoef());
@@ -59,6 +68,7 @@ public class SimAnnealing implements Runnable {
 					.getSolutionEnergy()) {
 				bestSolution.setSolution(currentSolution);
 				bestSolution.computeTargetFunction();
+				log.info("new energy: %f",bestSolution.getSolutionEnergy());
 			} else {
 				currentSolution.setSolution(bestSolution);
 			}
@@ -67,7 +77,7 @@ public class SimAnnealing implements Runnable {
 //		System.out.println("final temp: " + temperature);
 
 		entity.setResultNumbers(bestSolution.getBundle().getData().getAllValues().toString());
-		entity.setFinishTime(new Date());
+		entity.setFinishTime(new Date(System.currentTimeMillis()));
 		entity.setSolutionEnergy(bestSolution.getSolutionEnergy());
 		dataService.create(entity);
 	}
