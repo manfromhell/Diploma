@@ -20,14 +20,9 @@ public class OutputData {
 	private Date finishTime;
 	private String resultNumbers;
 	private Double solutionEnergy;
-
-	public OutputData() {
-
-	}
-
-	public OutputData(String resultNumbers) {
-		this.resultNumbers = resultNumbers;
-	}
+	private Long iterationsCount;
+	private Integer combinationsCount;
+	private Integer fitness;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -41,6 +36,13 @@ public class OutputData {
 	@ManyToOne
 	@JoinColumn(name = "INPUT_DATA_ID")
 	private InputData inputData;
+
+	public OutputData() {
+	}
+
+	public OutputData(InputData inputData) {
+		this.inputData = inputData;
+	}
 
 	public Date getStartTime() {
 		return startTime;
@@ -74,7 +76,8 @@ public class OutputData {
 	}
 
 	/**
-	 * @param solutionEnergy the solutionEnergy to set
+	 * @param solutionEnergy
+	 *            the solutionEnergy to set
 	 */
 	public void setSolutionEnergy(Double solutionEnergy) {
 		this.solutionEnergy = solutionEnergy;
@@ -88,4 +91,46 @@ public class OutputData {
 		this.inputData = inputData;
 	}
 
+	/**
+	 * @return the iterationsCount
+	 */
+	public Long getIterationsCount() {
+		return iterationsCount;
+	}
+
+	/**
+	 * @param iterations
+	 *            the iterationsCount to set
+	 */
+	public void setIterationsCount(Long iterations) {
+		this.iterationsCount = iterations;
+	}
+
+	/**
+	 * @return the maxNumber
+	 */
+	public Integer getCombinationsCount() {
+		return combinationsCount;
+	}
+
+	/**
+	 * @param maxNumber the maxNumber to set
+	 */
+	public void setCombinationsCount(Integer maxNumber) {
+		this.combinationsCount = maxNumber;
+	}
+
+	/**
+	 * @return the fitness
+	 */
+	public Integer getFitness() {
+		return fitness;
+	}
+
+	/**
+	 * @param fitness the fitness to set
+	 */
+	public void setFitness(Integer fitness) {
+		this.fitness = fitness;
+	}
 }

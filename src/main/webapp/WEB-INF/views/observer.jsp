@@ -32,6 +32,9 @@ $('.datepicker').datepicker({
 					<th>Finish time</th>
 					<th>Marks</th>
 					<th>Energy</th>
+					<th>Fitness</th>
+					<th>Real count of iterations</th>
+					<th>Count of combinations</th>
 				</tr>
 				<c:forEach items="${outputList}" var="output">
 					<tr>
@@ -47,6 +50,9 @@ $('.datepicker').datepicker({
 						<td>${output.finishTime}</td>
 						<td>${output.resultNumbers}</td>
 						<td>${output.solutionEnergy}</td>
+						<td>${output.fitness}</td>
+						<td>${output.iterationsCount}</td>
+						<td>${output.combinationsCount}</td>
 					</tr>
 				</c:forEach>
 			</table>

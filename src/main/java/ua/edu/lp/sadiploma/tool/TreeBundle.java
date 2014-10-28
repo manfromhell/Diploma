@@ -36,13 +36,19 @@ public class TreeBundle implements Bundle {
 		return bundle;
 	}
 
+	/**
+	 * returns element with index i, searching from root
+	 */
 	@Override
 	public Component getData(int i) {
 		return component.getRoot().findComponent(i);
 	}
 
+	/**
+	 * returns the length of all elements, from root
+	 */
 	public int getDataLength() {
-		return component.getSize();
+		return component.getRoot().getSize();
 	}
 
 	@Override
@@ -114,5 +120,15 @@ public class TreeBundle implements Bundle {
 	@Override
 	public void setComponent(Component component) {
 		this.component = component;
+	}
+
+	@Override
+	public boolean hasOnes() {
+		for (int val : component.getAllValues()) {
+			if (val == 1) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

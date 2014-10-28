@@ -1,4 +1,4 @@
-package ua.edu.lp.sadiploma.tool;
+package ua.edu.lp.sadiploma.service;
 
 import java.util.List;
 import java.util.concurrent.ExecutorService;
@@ -11,8 +11,9 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
 import ua.edu.lp.sadiploma.entity.InputData;
-import ua.edu.lp.sadiploma.service.InputDataService;
-import ua.edu.lp.sadiploma.service.OutputDataService;
+import ua.edu.lp.sadiploma.tool.Node;
+import ua.edu.lp.sadiploma.tool.SAConfig;
+import ua.edu.lp.sadiploma.tool.SimAnnealing;
 
 @Component
 public class ScheduleService {

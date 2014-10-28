@@ -14,6 +14,7 @@ public interface Bundle extends Cloneable{
 	boolean hasRepeats();
 	Object clone();
 	boolean hasNegatives();
+	boolean hasOnes();
 	List<Integer> generateCombinations();
 	Component getComponent();
 	void setComponent(Component component);

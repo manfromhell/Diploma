@@ -53,10 +53,12 @@ public class SimAnnealing implements Runnable {
 				config.getRepKoef());
 		bestSolution = new Solution(component, config.getGapsKoef(),
 				config.getRepKoef());
+		long iterations = 0;
 		bestSolution.computeTargetFunction();
 		double temperature = config.getInitialTemperature();
 		while (temperature > config.getFinalTemperature()) {
 			for (int i = 0; i < config.getIterationsAtTemperature(); i++) {
+				iterations++;
 				if (i % 2 == 0) {
 					currentSolution.mutation();
 				} else {
@@ -76,14 +78,15 @@ public class SimAnnealing implements Runnable {
 		}
 //		System.out.println("final temp: " + temperature);
 
+		entity.setIterationsCount(iterations);
+		entity.setFitness(bestSolution.getFitness());
 		entity.setResultNumbers(bestSolution.getBundle().getData().getAllValues().toString());
 		entity.setFinishTime(new Date(System.currentTimeMillis()));
+		entity.setCombinationsCount(bestSolution.getBundle().generateCombinations().size());
+		log.info("comb: "+bestSolution.getBundle().generateCombinations()+" size "+bestSolution.getBundle().generateCombinations().size());
 		entity.setSolutionEnergy(bestSolution.getSolutionEnergy());
 		dataService.create(entity);
 	}
-
-	
-	
 	
 	
 	

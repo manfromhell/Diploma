@@ -69,7 +69,7 @@ public class Solution {
 			tmpBundle.setData(y, this.bundle.getData(y).getValue()
 					+ randomValue);
 
-		} while (tmpBundle.hasNegatives());
+		} while ((tmpBundle.hasNegatives()) || (!tmpBundle.hasOnes()));
 		this.bundle = (Bundle) tmpBundle.clone();
 
 		return;
@@ -136,6 +136,16 @@ public class Solution {
 		return this.solutionEnergy;
 	}
 
+	public int getFitness() {
+		List<Integer> list = bundle.generateCombinations();
+		for (int i = 1; i < bundle.getDataLength() ; i++) {
+			if (!list.contains(i)) {
+				return i-1;
+			}
+		}
+		return list.size();
+	}
+
 	private static void sortList(List<Integer> list) {
 		int[] tmpArray = new int[list.size()];
 		for (int i = 0; i < list.size(); i++) {
@@ -171,7 +181,8 @@ public class Solution {
 	}
 
 	/**
-	 * @param gAPS_KOEF the gAPS_KOEF to set
+	 * @param gAPS_KOEF
+	 *            the gAPS_KOEF to set
 	 */
 	public void setGAPS_KOEF(double gAPS_KOEF) {
 		GAPS_KOEF = gAPS_KOEF;
@@ -185,7 +196,8 @@ public class Solution {
 	}
 
 	/**
-	 * @param rEP_KOEF the rEP_KOEF to set
+	 * @param rEP_KOEF
+	 *            the rEP_KOEF to set
 	 */
 	public void setREP_KOEF(double rEP_KOEF) {
 		REP_KOEF = rEP_KOEF;

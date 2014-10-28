@@ -35,10 +35,9 @@ public abstract class GenericDaoImpl<T> implements GenericDao<T> {
 	public List<T> findAll(Class<T> entityClass) {
 		List<T> result = null;
 		TypedQuery<T> query = (TypedQuery<T>) entityManager.createQuery("from "
-				+ entityClass.getName());
+				+ entityClass.getName()+" order by id desc");
 		result = query.getResultList();
 		return result;
-
 	}
 
 	@Override

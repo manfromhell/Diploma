@@ -12,7 +12,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd   http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task-3.0.xsd">
 	<context:component-scan base-package="ua.edu.lp.sadiploma" />
 	<task:annotation-driven />
-	<bean id="scheduleService" class="ua.edu.lp.sadiploma.tool.ScheduleService" />
+	<bean id="scheduleService" class="ua.edu.lp.sadiploma.service.ScheduleService" />
 	<import resource="data-context.xml" />
 </beans>
 
