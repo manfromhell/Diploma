@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import ua.edu.lp.sadiploma.entity.InputData;
 import ua.edu.lp.sadiploma.entity.OutputData;
+import ua.edu.lp.sadiploma.service.InputDataService;
 import ua.edu.lp.sadiploma.service.OutputDataService;
 
 @org.springframework.stereotype.Component
@@ -28,6 +29,8 @@ public class SimAnnealing implements Runnable {
 	private Solution bestSolution;
 	private InputData inputData;
 
+	private InputDataService inputDataService;
+
 	
 	@Autowired
 	public SimAnnealing(OutputDataService dataService) {
@@ -35,11 +38,12 @@ public class SimAnnealing implements Runnable {
 	}
 	
 	
-	public SimAnnealing(Component component, InputData inputData, OutputDataService dataService, SAConfig config) {
+	public SimAnnealing(Component component, InputData inputData, InputDataService inputDataService, OutputDataService dataService, SAConfig config) {
 		this.dataService = dataService;
 		this.config = config;
 		this.component = component;
 		this.inputData = inputData;
+		this.inputDataService = inputDataService;
 	}
 
 	@Override
@@ -86,6 +90,8 @@ public class SimAnnealing implements Runnable {
 		log.info("comb: "+bestSolution.getBundle().generateCombinations()+" size "+bestSolution.getBundle().generateCombinations().size());
 		entity.setSolutionEnergy(bestSolution.getSolutionEnergy());
 		dataService.create(entity);
+		inputData.setDone(true);
+		inputDataService.update(inputData);
 	}
 	
 	

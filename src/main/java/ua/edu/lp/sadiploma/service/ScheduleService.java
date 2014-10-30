@@ -1,8 +1,9 @@
 package ua.edu.lp.sadiploma.service;
 
 import java.util.List;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.ArrayBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,7 +21,7 @@ public class ScheduleService {
 
 	private static final Logger log = LoggerFactory
 			.getLogger(ScheduleService.class);
-	private ExecutorService executor = Executors.newFixedThreadPool(2);
+	private ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 2, 600, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(1024));
 
 	@Autowired
 	private InputDataService inputDataService;
@@ -32,7 +33,7 @@ public class ScheduleService {
 	public void checkInputData() {
 		log.info("check db, delay = 15s");
 		List<InputData> list = inputDataService.findUnchecked(2);
-		if (!executor.isTerminated()) {
+		if (executor.getActiveCount()<=2) {
 			for (InputData data : list) {
 
 				ua.edu.lp.sadiploma.tool.Component component = Node
@@ -43,10 +44,7 @@ public class ScheduleService {
 						data.getIterationsPerTemperature(), data.getGapsCoef(),
 						data.getRepCoef());
 
-				data.setDone(true);
-				inputDataService.update(data);
-
-				SimAnnealing simAnnealing = new SimAnnealing(component, data, outputDataService, config);
+				SimAnnealing simAnnealing = new SimAnnealing(component, data, inputDataService, outputDataService, config);
 				executor.execute(simAnnealing);
 			}
 		}
