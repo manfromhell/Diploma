@@ -10,9 +10,30 @@
 		</layout>
 	</appender>
 	
+	<appender name="def.file" class="org.apache.log4j.RollingFileAppender">
+        <param name="file" value="/log/server.log" />
+        <param name="append" value="true" />
+        <param name="MaxFileSize" value="1MB" />
+        <param name="MaxBackupIndex" value="100" />
+        <param name="threshold" value="debug" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d{ISO8601} %-5p [%c{1}] - %m%n" />
+        </layout>
+    </appender>
+
 	<!-- Application Loggers -->
 	<logger name="ua.edu.lp">
 		<level value="info" />
+	</logger>
+
+	<logger name="ua.edu.lp.sadiploma.tool.SimAnnealing">
+		<level value="debug" />
+		<appender-ref ref="def.file" />
+	</logger>
+	
+	<logger name="ua.edu.lp.sadiploma.service.ScheduleService">
+		<level value="debug" />
+		<appender-ref ref="def.file" />
 	</logger>
 	
 	<!-- 3rdparty Loggers -->
@@ -36,6 +57,7 @@
 	<root>
 		<priority value="warn" />
 		<appender-ref ref="console" />
+		<appender-ref ref="def.file" />
 	</root>
 	
 </log4j:configuration>

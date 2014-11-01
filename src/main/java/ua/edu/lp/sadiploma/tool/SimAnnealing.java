@@ -16,7 +16,7 @@ public class SimAnnealing implements Runnable {
 
 	private static final Logger log = LoggerFactory
 			.getLogger(SimAnnealing.class);
-	
+
 	private OutputDataService dataService;
 	private SAConfig config;
 	private Component component;
@@ -31,14 +31,14 @@ public class SimAnnealing implements Runnable {
 
 	private InputDataService inputDataService;
 
-	
 	@Autowired
 	public SimAnnealing(OutputDataService dataService) {
 		this.dataService = dataService;
 	}
-	
-	
-	public SimAnnealing(Component component, InputData inputData, InputDataService inputDataService, OutputDataService dataService, SAConfig config) {
+
+	public SimAnnealing(Component component, InputData inputData,
+			InputDataService inputDataService, OutputDataService dataService,
+			SAConfig config) {
 		this.dataService = dataService;
 		this.config = config;
 		this.component = component;
@@ -52,7 +52,7 @@ public class SimAnnealing implements Runnable {
 		OutputData entity = new OutputData();
 		entity.setInputData(inputData);
 		entity.setStartTime(new Date(System.currentTimeMillis()));
-		
+
 		currentSolution = new Solution(component, config.getGapsKoef(),
 				config.getRepKoef());
 		bestSolution = new Solution(component, config.getGapsKoef(),
@@ -74,28 +74,35 @@ public class SimAnnealing implements Runnable {
 					.getSolutionEnergy()) {
 				bestSolution.setSolution(currentSolution);
 				bestSolution.computeTargetFunction();
-				log.info("new energy: %f",bestSolution.getSolutionEnergy());
+				log.info("comb: "
+						+ bestSolution.getBundle()
+						+ " size "
+						+ bestSolution.getBundle().generateCombinations()
+								.size() + "new energy: "
+						+ bestSolution.getSolutionEnergy());
 			} else {
 				currentSolution.setSolution(bestSolution);
 			}
 			temperature *= config.getAlpha();
 		}
-//		System.out.println("final temp: " + temperature);
+		// System.out.println("final temp: " + temperature);
 
 		entity.setIterationsCount(iterations);
 		entity.setFitness(bestSolution.getFitness());
-		entity.setResultNumbers(bestSolution.getBundle().getData().getAllValues().toString());
+		entity.setResultNumbers(bestSolution.getBundle().getData()
+				.getAllValues().toString());
 		entity.setFinishTime(new Date(System.currentTimeMillis()));
-		entity.setCombinationsCount(bestSolution.getBundle().generateCombinations().size());
-		log.info("comb: "+bestSolution.getBundle().generateCombinations()+" size "+bestSolution.getBundle().generateCombinations().size());
+		entity.setCombinationsCount(bestSolution.getBundle()
+				.generateCombinations().size());
+		log.info("comb: " + bestSolution.getBundle().generateCombinations()
+				+ " size "
+				+ bestSolution.getBundle().generateCombinations().size());
 		entity.setSolutionEnergy(bestSolution.getSolutionEnergy());
 		dataService.create(entity);
 		inputData.setDone(true);
 		inputDataService.update(inputData);
 	}
-	
-	
-	
+
 	/**
 	 * @return the bestSolution
 	 */
