@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -28,6 +29,10 @@ public class InputData {
 	private long timeForComputing;
 	private long timeForOutputCurrentRes;
 	private boolean done;
+	private String treeType;
+	
+	@Transient
+	private int numberOfNodes;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -296,6 +301,22 @@ public class InputData {
 	 */
 	public void setDone(boolean done) {
 		this.done = done;
+	}
+
+	public int getNumberOfNodes() {
+		return numberOfNodes;
+	}
+
+	public void setNumberOfNodes(int numberOfNodes) {
+		this.numberOfNodes = numberOfNodes;
+	}
+
+	public String getTreeType() {
+		return treeType;
+	}
+
+	public void setTreeType(String treeType) {
+		this.treeType = treeType;
 	}
 
 }

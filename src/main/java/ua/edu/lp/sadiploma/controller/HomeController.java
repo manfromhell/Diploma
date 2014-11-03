@@ -53,6 +53,7 @@ public class HomeController {
 	public String writeInputData(@ModelAttribute("inputData") InputData inputData){
 		log.info(String.format("POST setdata: inputData = %s", inputData));
 		inputData.setDone(false);
+		
 		inputDataService.create(inputData);
 		return "main";
 	}

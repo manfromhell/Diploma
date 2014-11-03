@@ -20,14 +20,18 @@ $('.datepicker').datepicker({
 			<table
 				class="table table-bordered table-hover table-striped sortable">
 				<tr>
+					<th>Tree type</th>
+					<th>Number of nodes</th>
 					<th>Parent code</th>
+					<th>Gaps coefficient</th>
+					<th>Repeat coefficient</th>
+					
 					<th>Initial temperature</th>
 					<th>Final temperature</th>
 					<th>Iterations per temperature</th>
 					<th>Alpha</th>
-					<th>Gaps coefficient</th>
-					<th>Repeat coefficient</th>
 					<th>Time for computing</th>
+					
 					<th>Start time</th>
 					<th>Finish time</th>
 					<th>Marks</th>
@@ -38,13 +42,15 @@ $('.datepicker').datepicker({
 				</tr>
 				<c:forEach items="${outputList}" var="output">
 					<tr>
+						<td>${output.inputData.treeType}</td>
+						<td>${output.inputData.numberOfNodes}</td>
 						<td>${output.inputData.parentCode}</td>
+						<td>${output.inputData.gapsCoef}</td>
+						<td>${output.inputData.repCoef}</td>
 						<td>${output.inputData.initTemp}</td>
 						<td>${output.inputData.finalTemp}</td>
 						<td>${output.inputData.iterationsPerTemperature}</td>
 						<td>${output.inputData.alpha}</td>
-						<td>${output.inputData.gapsCoef}</td>
-						<td>${output.inputData.repCoef}</td>
 						<td>${output.inputData.timeForComputing}</td>
 						<td>${output.startTime}</td>
 						<td>${output.finishTime}</td>
