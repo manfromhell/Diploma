@@ -53,7 +53,10 @@ public class HomeController {
 	public String writeInputData(@ModelAttribute("inputData") InputData inputData){
 		log.info(String.format("POST setdata: inputData = %s", inputData));
 		inputData.setDone(false);
-		
+		int numberOfNodes = inputDataService.getNumberOfNodes(inputData.getParentCode());
+		String treeType = inputDataService.getTreeType(inputData.getRepCoef(), inputData.getGapsCoef());
+		inputData.setTreeType(treeType);
+		inputData.setNumberOfNodes(numberOfNodes);
 		inputDataService.create(inputData);
 		return "main";
 	}

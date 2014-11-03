@@ -284,3 +284,15 @@
 .rating-menu ul li {
 	width: 100%;
 }
+
+.cellRed{
+	color:red;
+}
+
+.cellGreen {
+	color:green;
+}
+
+.cellBlue{
+	color:blue;
+}

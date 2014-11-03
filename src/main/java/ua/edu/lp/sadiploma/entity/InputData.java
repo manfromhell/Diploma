@@ -26,8 +26,6 @@ public class InputData {
 	private double alpha;
 	private double gapsCoef;
 	private double repCoef;
-	private long timeForComputing;
-	private long timeForOutputCurrentRes;
 	private boolean done;
 	private String treeType;
 	
@@ -125,36 +123,6 @@ public class InputData {
 		this.iterationsPerTemperature = tempIter;
 	}
 
-	/**
-	 * @return the timeForComputing
-	 */
-	public long getTimeForComputing() {
-		return timeForComputing;
-	}
-
-	/**
-	 * @param timeForComputing
-	 *            the timeForComputing to set
-	 */
-	public void setTimeForComputing(long timeForComputing) {
-		this.timeForComputing = timeForComputing;
-	}
-
-	/**
-	 * @return the timeForOutputCurrentRes
-	 */
-	public long getTimeForOutputCurrentRes() {
-		return timeForOutputCurrentRes;
-	}
-
-	/**
-	 * @param timeForOutputCurrentRes
-	 *            the timeForOutputCurrentRes to set
-	 */
-	public void setTimeForOutputCurrentRes(long timeForOutputCurrentRes) {
-		this.timeForOutputCurrentRes = timeForOutputCurrentRes;
-	}
-
 	public double getAlpha() {
 		return alpha;
 	}
@@ -189,9 +157,7 @@ public class InputData {
 		return "InputData [parentCode=" + parentCode + ", initTemp=" + initTemp
 				+ ", finalTemp=" + finalTemp + ", iterationsPerTemperature="
 				+ iterationsPerTemperature + ", alpha=" + alpha + ", gapsCoef="
-				+ gapsCoef + ", repCoef=" + repCoef + ", timeForComputing="
-				+ timeForComputing + ", timeForOutputCurrentRes="
-				+ timeForOutputCurrentRes + ", id=" + id + ", created="
+				+ gapsCoef + ", repCoef=" + repCoef + ", id=" + id + ", created="
 				+ created + ", outputData=" + outputData + "]";
 	}
 
@@ -222,11 +188,6 @@ public class InputData {
 				+ ((parentCode == null) ? 0 : parentCode.hashCode());
 		temp = Double.doubleToLongBits(repCoef);
 		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result
-				+ (int) (timeForComputing ^ (timeForComputing >>> 32));
-		result = prime
-				* result
-				+ (int) (timeForOutputCurrentRes ^ (timeForOutputCurrentRes >>> 32));
 		return result;
 	}
 
@@ -280,10 +241,6 @@ public class InputData {
 			return false;
 		if (Double.doubleToLongBits(repCoef) != Double
 				.doubleToLongBits(other.repCoef))
-			return false;
-		if (timeForComputing != other.timeForComputing)
-			return false;
-		if (timeForOutputCurrentRes != other.timeForOutputCurrentRes)
 			return false;
 		return true;
 	}

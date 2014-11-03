@@ -1,6 +1,7 @@
 package ua.edu.lp.sadiploma.service;
 
 import java.util.List;
+import java.util.ResourceBundle;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +50,22 @@ public class InputDataServiceImpl implements InputDataService {
 	@Override
 	public List<InputData> findUnchecked(Integer count) {
 		return inputDataDao.findUnchecked(count,InputData.class);
+	}
+	
+	public int getNumberOfNodes(String parentCode){
+		String[] parentCodeArray = parentCode.split("[, /;-]|(, )");
+		return parentCodeArray.length;
+	}
+	
+	public String getTreeType(double repsCoef, double gapsCoef){
+		//ResourceBundle rb = ResourceBundle.getBundle(baseName)
+		if (repsCoef>gapsCoef){
+			return "Restricted Leech Trees";
+		}
+		if (gapsCoef>repsCoef){
+			return "Golomb Trees";
+		}
+		return "Unrestricted Leech Trees";
 	}
 
 }

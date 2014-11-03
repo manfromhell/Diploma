@@ -20,45 +20,45 @@ $('.datepicker').datepicker({
 			<table
 				class="table table-bordered table-hover table-striped sortable">
 				<tr>
-					<th>Tree type</th>
-					<th>Number of nodes</th>
-					<th>Parent code</th>
-					<th>Gaps coefficient</th>
-					<th>Repeat coefficient</th>
+					<th class="cellRed">Tree type</th>
+					<th class="cellRed">Number of nodes</th>
+					<th class="cellRed">Parent code</th>
+					<th class="cellRed">Gaps coefficient</th>
+					<th class="cellRed">Repeat coefficient</th>
 					
-					<th>Initial temperature</th>
-					<th>Final temperature</th>
-					<th>Iterations per temperature</th>
-					<th>Alpha</th>
-					<th>Time for computing</th>
+					<th class="cellGreen">Initial temperature</th>
+					<th class="cellGreen">Final temperature</th>
+					<th class="cellGreen">Iterations per temperature</th>
+					<th class="cellGreen">Alpha</th>
 					
-					<th>Start time</th>
-					<th>Finish time</th>
-					<th>Marks</th>
-					<th>Energy</th>
-					<th>Fitness</th>
-					<th>Real count of iterations</th>
-					<th>Count of combinations</th>
+					<th class="cellBlue">Start time</th>
+					<th class="cellBlue">Finish time</th>
+					<th class="cellBlue">Result Marks</th>
+					<th class="cellBlue">Energy</th>
+					<th class="cellBlue">Fitness</th>
+					<th class="cellBlue">Real count of iterations</th>
+					<th class="cellBlue">Count of combinations</th>
 				</tr>
 				<c:forEach items="${outputList}" var="output">
 					<tr>
-						<td>${output.inputData.treeType}</td>
-						<td>${output.inputData.numberOfNodes}</td>
-						<td>${output.inputData.parentCode}</td>
-						<td>${output.inputData.gapsCoef}</td>
-						<td>${output.inputData.repCoef}</td>
-						<td>${output.inputData.initTemp}</td>
-						<td>${output.inputData.finalTemp}</td>
-						<td>${output.inputData.iterationsPerTemperature}</td>
-						<td>${output.inputData.alpha}</td>
-						<td>${output.inputData.timeForComputing}</td>
-						<td>${output.startTime}</td>
-						<td>${output.finishTime}</td>
-						<td>${output.resultNumbers}</td>
-						<td>${output.solutionEnergy}</td>
-						<td>${output.fitness}</td>
-						<td>${output.iterationsCount}</td>
-						<td>${output.combinationsCount}</td>
+						<td class="cellRed">${output.inputData.treeType}</td>
+						<td class="cellRed">${output.inputData.numberOfNodes}</td>
+						<td class="cellRed">${output.inputData.parentCode}</td>
+						<td class="cellRed">${output.inputData.gapsCoef}</td>
+						<td class="cellRed">${output.inputData.repCoef}</td>
+						
+						<td class="cellGreen">${output.inputData.initTemp}</td>
+						<td class="cellGreen">${output.inputData.finalTemp}</td>
+						<td class="cellGreen">${output.inputData.iterationsPerTemperature}</td>
+						<td class="cellGreen">${output.inputData.alpha}</td>
+
+						<td class="cellBlue">${output.startTime}</td>
+						<td class="cellBlue">${output.finishTime}</td>
+						<td class="cellBlue">${output.resultNumbers}</td>
+						<td class="cellBlue">${output.solutionEnergy}</td>
+						<td class="cellBlue">${output.fitness}</td>
+						<td class="cellBlue">${output.iterationsCount}</td>
+						<td class="cellBlue">${output.combinationsCount}</td>
 					</tr>
 				</c:forEach>
 			</table>
