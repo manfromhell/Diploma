@@ -28,8 +28,6 @@ public class InputData {
 	private double repCoef;
 	private boolean done;
 	private String treeType;
-	
-	@Transient
 	private int numberOfNodes;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

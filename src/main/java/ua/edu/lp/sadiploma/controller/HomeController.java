@@ -54,9 +54,11 @@ public class HomeController {
 		log.info(String.format("POST setdata: inputData = %s", inputData));
 		inputData.setDone(false);
 		int numberOfNodes = inputDataService.getNumberOfNodes(inputData.getParentCode());
+		System.err.println("Number of nodes!: "+numberOfNodes);
 		String treeType = inputDataService.getTreeType(inputData.getRepCoef(), inputData.getGapsCoef());
 		inputData.setTreeType(treeType);
 		inputData.setNumberOfNodes(numberOfNodes);
+		System.err.println("Number of nodes in input data: "+inputData.getNumberOfNodes());
 		inputDataService.create(inputData);
 		return "main";
 	}

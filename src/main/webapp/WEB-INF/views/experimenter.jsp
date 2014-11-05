@@ -6,12 +6,20 @@
 	<tiles:putAttribute name="body">
 <script type="text/javascript">
 $(document).ready(function(){
-	console.log("Bleat");
-
 $('#spinner').change(function(){
 	var val = $('#spinner').val();
-	console.log("Spinner val: "+val);
-	document.getElementById('textInput').value=val; 
+	if (val==-100){
+		document.getElementById('textInputG').value=100;
+		document.getElementById('textInputR').value=0;
+	}
+	if (val==0){
+		document.getElementById('textInputG').value=0;
+		document.getElementById('textInputR').value=0;
+	}
+	if (val==100){
+		document.getElementById('textInputG').value=0;
+		document.getElementById('textInputR').value=100;
+	}
 })
 })
   </script>
@@ -20,29 +28,32 @@ $('#spinner').change(function(){
 			class="form-horizontal form-validate form-container">
 			<form:label path="parentCode" class="form-title">Parent code</form:label>
 			<form:input path="parentCode" value="0,1,2,3,4,5,6" class="form-field"/>
+			<a href="#">Generate picture</a>
 			<br>
 			<br>
 			<form:label path="gapsCoef" class="form-title">Gaps Coefficient</form:label>
-			<input type="number" id="textInput" value="">
-			<form:input path="gapsCoef" value="1.0" type="range" MIN="0" MAX="10" STEP="2" VALUE="4" id="spinner"/>
+			<form:input path="gapsCoef" type="text" id="textInputG" readonly="true" class="form-field"/>
 			<br>
 			<br>
 			<form:label path="repCoef" class="form-title">Repeat Coefficient</form:label>
-			<form:input path="repCoef" value="100.0" class="form-field"/>
+			<form:input path="repCoef" class="form-field" type="text" id="textInputR" readonly="true" />
+			<input value="100" type="range" MIN="-100" MAX="100" STEP="100" id="spinner"/>
+			<br>
+			<br>
 			<form:label path="initTemp" class="form-title">Initial temperature</form:label>
-			<form:input path="initTemp" value="100" class="form-field"/>
+			<form:input path="initTemp" value="100" class="form-field" type="number" min="0"/>
 			<br>
 			<br>
 			<form:label path="finalTemp" class="form-title">Final temperature</form:label>
-			<form:input path="finalTemp" value="10" class="form-field"/>
+			<form:input path="finalTemp" value="10" class="form-field" type="number" min="0"/>
 			<br>
 			<br>
 			<form:label path="alpha" class="form-title">Temperature change coefficient (alpha)</form:label>
-			<form:input path="alpha" value="0.99" class="form-field"/>
+			<form:input path="alpha" value="0.99" class="form-field" type="number" min="0" max = "1" step="0.001"/>
 			<br>
 			<br>
 			<form:label path="iterationsPerTemperature" class="form-title">Iterations Per Temperature</form:label>
-			<form:input path="iterationsPerTemperature" value="5" class="form-field"/>
+			<form:input path="iterationsPerTemperature" value="5" class="form-field" type="number" min="0"/>
 			<br>
 			<br>
 			<form:button type="submit">CALCULATE</form:button>
