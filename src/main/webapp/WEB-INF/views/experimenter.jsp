@@ -10,14 +10,14 @@ $('#spinner').change(function(){
 	var val = $('#spinner').val();
 	if (val==-100){
 		document.getElementById('textInputG').value=100;
-		document.getElementById('textInputR').value=0;
+		document.getElementById('textInputR').value=1;
 	}
 	if (val==0){
-		document.getElementById('textInputG').value=0;
-		document.getElementById('textInputR').value=0;
+		document.getElementById('textInputG').value=1;
+		document.getElementById('textInputR').value=1;
 	}
 	if (val==100){
-		document.getElementById('textInputG').value=0;
+		document.getElementById('textInputG').value=1;
 		document.getElementById('textInputR').value=100;
 	}
 })
@@ -54,6 +54,10 @@ $('#spinner').change(function(){
 			<br>
 			<form:label path="iterationsPerTemperature" class="form-title">Iterations Per Temperature</form:label>
 			<form:input path="iterationsPerTemperature" value="5" class="form-field" type="number" min="0"/>
+			<br>
+			<br>
+			<form:label path="comment" class="form-title">Comment</form:label>
+			<form:input path="comment" value="" class="form-field"/>
 			<br>
 			<br>
 			<form:button type="submit">CALCULATE</form:button>

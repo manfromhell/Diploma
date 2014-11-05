@@ -29,6 +29,7 @@ public class InputData {
 	private boolean done;
 	private String treeType;
 	private int numberOfNodes;
+	private String comment;
 
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Id
@@ -272,6 +273,14 @@ public class InputData {
 
 	public void setTreeType(String treeType) {
 		this.treeType = treeType;
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
 	}
 
 }
