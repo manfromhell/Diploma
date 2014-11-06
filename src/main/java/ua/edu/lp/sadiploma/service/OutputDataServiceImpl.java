@@ -48,9 +48,4 @@ public class OutputDataServiceImpl implements OutputDataService {
 		return outputDataDao.findUnchecked(count, OutputData.class);
 	}
 
-	@Override
-	public List<OutputData> filterOutput(int numberOfNodes) {
-		return outputDataDao.filterOutput(numberOfNodes);
-	}
-
 }

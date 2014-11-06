@@ -9,16 +9,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
-@NamedQueries({
-	@NamedQuery(name="OutputData.filter", query="SELECT o FROM OutputData o JOIN o.inputData i WHERE i.numberOfNodes =:numberOfNodes"),
-})
 @Table(name = "OUTPUT_DATA")
 public class OutputData {
 	private Date startTime;
