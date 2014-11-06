@@ -95,7 +95,7 @@ public class HomeController {
 		System.err.println("Start time to: "+startTimeTo);
 		System.err.println("Finish time from: "+finishTimeFrom);
 		System.err.println("Finish time to: "+finishTimeTo);
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:MM");
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 		Date startTimeFromDate=null;
 		Date startTimeToDate=null;
 		Date finishTimeFromDate=null;
@@ -109,6 +109,8 @@ public class HomeController {
 			System.err.println("Parse exception!");
 			e.printStackTrace();
 		}
+		System.err.println("Start time from d : "+startTimeFromDate);
+		System.err.println("Start time to d : "+startTimeToDate);
 		
 		List<OutputData> result = outputDataService.filterOutput(numberOfNodesFrom, numberOfNodesTo, comment, startTimeFromDate, startTimeToDate, finishTimeFromDate, finishTimeToDate);
 		System.err.println("Result of filtering!!!: "+result.toString());

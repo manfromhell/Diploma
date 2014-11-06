@@ -57,7 +57,7 @@ $('#spinner').change(function(){
 			<br>
 			<br>
 			<form:label path="comment" class="form-title">Comment</form:label>
-			<form:input path="comment" value="" class="form-field"/>
+			<form:input path="comment" class="form-field"/>
 			<br>
 			<br>
 			<form:button type="submit">CALCULATE</form:button>
