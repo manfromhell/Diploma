@@ -32,11 +32,11 @@ $('#spinner').change(function(){
 			<br>
 			<br>
 			<form:label path="gapsCoef" class="form-title">Gaps Coefficient</form:label>
-			<form:input path="gapsCoef" type="text" id="textInputG" readonly="true" class="form-field"/>
+			<form:input path="gapsCoef" type="text" id="textInputG" readonly="true" class="form-field" value="1"/>
 			<br>
 			<br>
 			<form:label path="repCoef" class="form-title">Repeat Coefficient</form:label>
-			<form:input path="repCoef" class="form-field" type="text" id="textInputR" readonly="true" />
+			<form:input path="repCoef" class="form-field" type="text" id="textInputR" readonly="true" value="100"/>
 			<input value="100" type="range" MIN="-100" MAX="100" STEP="100" id="spinner"/>
 			<br>
 			<br>

@@ -17,7 +17,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @NamedQueries({
-	@NamedQuery(name="OutputData.filter", query="SELECT o FROM OutputData o JOIN o.inputData i WHERE i.numberOfNodes =:numberOfNodes"),
+	@NamedQuery(name="OutputData.filter", query="SELECT o FROM OutputData o JOIN o.inputData i WHERE (i.numberOfNodes BETWEEN :numberOfNodesFrom AND :numberOfNodesTo) AND i.comment = :comment AND (o.startTime BETWEEN :startTimeFrom AND :startTimeTo) AND (o.finishTime BETWEEN :finishTimeFrom AND :finishTimeTo)"),
 })
 @Table(name = "OUTPUT_DATA")
 public class OutputData {

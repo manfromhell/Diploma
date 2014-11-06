@@ -1,5 +1,6 @@
 package ua.edu.lp.sadiploma.service;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,8 +50,16 @@ public class OutputDataServiceImpl implements OutputDataService {
 	}
 
 	@Override
-	public List<OutputData> filterOutput(int numberOfNodes) {
-		return outputDataDao.filterOutput(numberOfNodes);
+	public List<OutputData> filterOutput(int numberOfNodesFrom,
+			int numberOfNodesTo, String comment, Date startTimeFrom,
+			Date startTimeTo, Date finishTimeFrom, Date finishTimeTo) {
+		return outputDataDao.filterOutput(numberOfNodesFrom, numberOfNodesTo, comment, startTimeFrom, startTimeTo, finishTimeFrom, finishTimeTo);
 	}
+
+	@Override
+	public List<OutputData> executeRequest(String request) {
+		return outputDataDao.executeRequest(request);
+	}
+
 
 }

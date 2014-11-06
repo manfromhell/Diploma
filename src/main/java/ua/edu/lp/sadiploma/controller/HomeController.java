@@ -1,5 +1,7 @@
 package ua.edu.lp.sadiploma.controller;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -80,10 +82,10 @@ public class HomeController {
 			@RequestParam(value = "numberOfNodesFrom") int numberOfNodesFrom,
 			@RequestParam(value = "numberOfNodesTo") int numberOfNodesTo,
 			@RequestParam(value = "comment") String comment,
-			@RequestParam(value = "startTimeFrom") Date startTimeFrom,
-			@RequestParam(value = "startTimeTo") Date startTimeTo,
-			@RequestParam(value = "finishTimeFrom") Date finishTimeFrom,
-			@RequestParam(value = "finishTimeTo") Date finishTimeTo,
+			@RequestParam(value = "startTimeFrom") String startTimeFrom,
+			@RequestParam(value = "startTimeTo") String startTimeTo,
+			@RequestParam(value = "finishTimeFrom") String finishTimeFrom,
+			@RequestParam(value = "finishTimeTo") String finishTimeTo,
 			Model model) {
 		System.err.println("Parent code: "+parentCode);
 		System.err.println("Number of nodes from: "+numberOfNodesFrom);
@@ -93,6 +95,32 @@ public class HomeController {
 		System.err.println("Start time to: "+startTimeTo);
 		System.err.println("Finish time from: "+finishTimeFrom);
 		System.err.println("Finish time to: "+finishTimeTo);
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-mm-dd HH:MM");
+		Date startTimeFromDate=null;
+		Date startTimeToDate=null;
+		Date finishTimeFromDate=null;
+		Date finishTimeToDate=null;
+		try {
+			startTimeFromDate = dateFormat.parse(startTimeFrom);
+			startTimeToDate = dateFormat.parse(startTimeTo);
+			finishTimeFromDate = dateFormat.parse(finishTimeFrom);
+			finishTimeToDate = dateFormat.parse(finishTimeTo);
+		} catch (ParseException e) {
+			System.err.println("Parse exception!");
+			e.printStackTrace();
+		}
+		
+		List<OutputData> result = outputDataService.filterOutput(numberOfNodesFrom, numberOfNodesTo, comment, startTimeFromDate, startTimeToDate, finishTimeFromDate, finishTimeToDate);
+		System.err.println("Result of filtering!!!: "+result.toString());
+		model.addAttribute("outputList",result);
+		return "observer";
+	}
+	
+	@RequestMapping(value="/request", method=RequestMethod.GET)
+	public String executeQuery(@RequestParam(value="query") String query, Model model){
+		List<OutputData> result = outputDataService.executeRequest(query);
+		System.err.println("Result of request!!!: "+result.toString());
+		model.addAttribute("outputList",result);
 		return "observer";
 	}
 }

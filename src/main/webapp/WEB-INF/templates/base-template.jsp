@@ -14,6 +14,8 @@
 	src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"
 	type="text/css" />
+<link href="<c:url value="/resources/css/jquery.datetimepicker.css" />" rel="stylesheet"
+	type="text/css" />
 <link href="<c:url value="/resources/css/bootstrap-theme.min.css" />"
 	rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/bootstrap.min.css" />"
@@ -34,8 +36,8 @@
 <script src="<c:url value="/resources/js/bootstrap-datepicker.js" />"></script>
 <script src="<c:url value="/resources/js/jquery.timepicker.js" />"></script>
 <script src="<c:url value="/resources/js/jquery.timepicker.js" />"></script>
-
-
+<script src="<c:url value="/resources/js/jquery.js" />"></script>
+<script src="<c:url value="/resources/js/jquery.datetimepicker.js" />"></script>
 <!-- <link rel="stylesheet" href="/css/style.css" type="text/css"/>
 Bootstrap
     <link href="css/bootstrap.min.css" rel="stylesheet">

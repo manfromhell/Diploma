@@ -9,9 +9,9 @@
 		<script>
 			$(document).ready(function() {
 				console.log("Document is ready");
-				$('.datepicker').datepicker({
-					format : "yyyy-mm-dd"
-				})
+				$('.datetimepicker').datetimepicker({
+					format:'Y-m-d H:i'
+				});
 				$('#timepicker').timepicker();
 			})
 		</script>
@@ -19,9 +19,18 @@
 			<center>Calculations results</center>
 		</h1>
 		
+		<form action="request" method="get">
+		Request to DB:
+		<input type="text" size="100" name="query"/>
+		<input type="submit" value="Submit">
+		</form>
+		<br>
+		<br>
+		<br>
 		<form action="filter" method="get">
 		Tree type
 		<select>
+			<option>All</option>
 			<option>Golomb Trees</option>
 			<option>Restricted Leech Trees</option>
 			<option>Unrestricted Leech Trees</option>
@@ -35,13 +44,13 @@
 		Comment
 		<input type="text" name="comment" />
 		Start time
-		<input class="datepicker" name="startTimeFrom" />
+		<input class="datetimepicker" name="startTimeFrom" />
 		-
-		<input class="datepicker" name="startTimeTo" />
+		<input class="datetimepicker" name="startTimeTo" />
 		Finish time
-		<input class="datepicker" name="finishTimeFrom"/>
+		<input class="datetimepicker" name="finishTimeFrom"/>
 		-
-		<input class="datepicker" name="finishTimeTo"/>
+		<input class="datetimepicker" name="finishTimeTo"/>
 		<br>
 		<br>
 		<input type="submit" value="Submit">
