@@ -23,13 +23,31 @@ $('#spinner').change(function(){
 		document.getElementById('textInputR').value=100;
 	}
 })
+
+$('#generatePicture').click(function(){
+	var parentCode = $('#parentCode').val();
+    $.ajax({
+        type : "Get", 
+        url : "getPicture", 
+        data : "parentCode=" + parentCode,
+        success : function(response) {
+        	var picture = document.getElementById('picture');
+       /*  picture.innerHTML = '<p>test!</p>' */
+        	picture.innerHTML='<img src="D:/eclipse/projects/Diploma/out.gif" height="100" width="100"/>'
+        },
+        error : function(e) {
+         alert('Error: ' + e); 
+        }
+       });
+})
 })
   </script>
+  <div id="picture">Picture here</div>
+			<button id="generatePicture"><spring:message code="label.generatePicture" /></button>
 		<form:form commandName="inputData" action="setData" method="POST"
 			class="form-horizontal form-validate form-container">
 			<form:label path="parentCode" class="form-title"><spring:message code="label.parentCode" /></form:label>
-			<form:input path="parentCode" value="0,1,2,3,4,5,6" class="form-field"/>
-			<a href="#"><spring:message code="label.generatePicture" /></a>
+			<form:input path="parentCode" value="0,1,2,3,4,5,6" class="form-field" id="parentCode"/>
 			<br>
 			<br>
 			<form:label path="gapsCoef" class="form-title"><spring:message code="label.gapsCoef" /></form:label>

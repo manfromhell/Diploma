@@ -38,6 +38,7 @@
 <script src="<c:url value="/resources/js/jquery.timepicker.js" />"></script>
 <script src="<c:url value="/resources/js/jquery.js" />"></script>
 <script src="<c:url value="/resources/js/jquery.datetimepicker.js" />"></script>
+<script src="<c:url value="/resources/js/colResizable-1.3.min.js" />"></script>
 <!-- <link rel="stylesheet" href="/css/style.css" type="text/css"/>
 Bootstrap
     <link href="css/bootstrap.min.css" rel="stylesheet">

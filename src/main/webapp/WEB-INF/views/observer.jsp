@@ -14,6 +14,7 @@
 					format:'Y-m-d H:i'
 				});
 				$('#timepicker').timepicker();
+			    $('table').colResizable();
 			})
 		</script>
 		<form action="request" method="get">
@@ -53,8 +54,7 @@
 		<input type="submit" value="<spring:message code="label.filter" />">
 		</form>
 		<c:if test="${!empty outputList}">
-			<table
-				class="table table-bordered table-hover table-striped sortable">
+			<table class="table table-bordered table-hover table-striped sortable">
 				<tr>
 					<th><spring:message code="label.treeType" /></th>
 					<th><spring:message code="label.numberOfNodes" /></th>

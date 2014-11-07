@@ -1,5 +1,6 @@
 package ua.edu.lp.sadiploma.controller;
 
+import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -16,10 +17,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+
 import ua.edu.lp.sadiploma.entity.InputData;
 import ua.edu.lp.sadiploma.entity.OutputData;
 import ua.edu.lp.sadiploma.service.InputDataService;
 import ua.edu.lp.sadiploma.service.OutputDataService;
+import ua.edu.lp.sadiploma.tool.Proba;
 
 /**
  * Handles requests for the application home page.
@@ -124,5 +128,14 @@ public class HomeController {
 		System.err.println("Result of request!!!: "+result.toString());
 		model.addAttribute("outputList",result);
 		return "observer";
+	}
+	
+	@RequestMapping("/getPicture")
+	public String getPicture(
+			@RequestParam(value="parentCode") String parentCode){
+		System.err.println("Parent code: "+parentCode);
+		Proba proba = new Proba();
+		proba.generatePicture(parentCode);
+		return "redirect:/observer";
 	}
 }
