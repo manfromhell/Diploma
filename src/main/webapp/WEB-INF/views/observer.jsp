@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://tiles.apache.org/tags-tiles" prefix="tiles"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <tiles:insertDefinition name="base-template">
 	<tiles:putAttribute name="body">
@@ -15,69 +16,65 @@
 				$('#timepicker').timepicker();
 			})
 		</script>
-		<h1>
-			<center>Calculations results</center>
-		</h1>
-		
 		<form action="request" method="get">
-		Request to DB:
+		<spring:message code="label.requestToDb" />
 		<input type="text" size="100" name="query"/>
-		<input type="submit" value="Submit">
+		<input type="submit" value="<spring:message code="label.send" />">
 		</form>
 		<br>
 		<br>
 		<br>
 		<form action="filter" method="get">
-		Tree type
+		<spring:message code="label.treeType" />
 		<select>
-			<option>All</option>
-			<option>Golomb Trees</option>
-			<option>Restricted Leech Trees</option>
-			<option>Unrestricted Leech Trees</option>
+			<option><spring:message code="label.all" /></option>
+			<option><spring:message code="label.golombTrees" /></option>
+			<option><spring:message code="label.restrictedLeechTrees" /></option>
+			<option><spring:message code="label.unrestrictedLeechTrees" /></option>
 		</select>
-		Parent code
+		<spring:message code="label.parentCode" />
 		<input type="text" name="parentCode" />
-		Number of nodes
+		<spring:message code="label.numberOfNodes" />
 		<input type="number" min="1" value="1" name="numberOfNodesFrom" />
 		-
 		<input type="number" min="1" value="7" name="numberOfNodesTo" />
-		Comment
+		<spring:message code="label.comment" />
 		<input type="text" name="comment" />
-		Start time
+		<spring:message code="label.startTime" />
 		<input class="datetimepicker" name="startTimeFrom" />
 		-
 		<input class="datetimepicker" name="startTimeTo" />
-		Finish time
+		<spring:message code="label.finishTime" />
 		<input class="datetimepicker" name="finishTimeFrom"/>
 		-
 		<input class="datetimepicker" name="finishTimeTo"/>
 		<br>
 		<br>
-		<input type="submit" value="Submit">
+		<input type="submit" value="<spring:message code="label.filter" />">
 		</form>
 		<c:if test="${!empty outputList}">
 			<table
 				class="table table-bordered table-hover table-striped sortable">
 				<tr>
-					<th class="cellRed">Tree type</th>
-					<th class="cellRed">Number of nodes</th>
-					<th class="cellRed">Parent code</th>
-					<th class="cellRed">Gaps coefficient</th>
-					<th class="cellRed">Repeat coefficient</th>
-					<th class="cellRed">Comment</th>
+					<th><spring:message code="label.treeType" /></th>
+					<th><spring:message code="label.numberOfNodes" /></th>
+					<th><spring:message code="label.parentCode" /></th>
+					<th><spring:message code="label.gapsCoef" /></th>
+					<th><spring:message code="label.repeatsCoef" /></th>
+					<th><spring:message code="label.comment" /></th>
 
-					<th class="cellGreen">Initial temperature</th>
-					<th class="cellGreen">Final temperature</th>
-					<th class="cellGreen">Iterations per temperature</th>
-					<th class="cellGreen">Alpha</th>
+					<th><spring:message code="label.initTemp" /></th>
+					<th><spring:message code="label.finalTemp" /></th>
+					<th><spring:message code="label.iterations" /></th>
+					<th><spring:message code="label.alpha" /></th>
 
-					<th class="cellBlue">Start time</th>
-					<th class="cellBlue">Finish time</th>
-					<th class="cellBlue">Result Marks</th>
-					<th class="cellBlue">Energy</th>
-					<th class="cellBlue">Fitness</th>
-					<th class="cellBlue">Real count of iterations</th>
-					<th class="cellBlue">Count of combinations</th>
+					<th><spring:message code="label.startTime" /></th>
+					<th><spring:message code="label.finishTime" /></th>
+					<th><spring:message code="label.resultMarks" /></th>
+					<th><spring:message code="label.energy" /></th>
+					<th><spring:message code="label.fitness" /></th>
+					<th><spring:message code="label.realCountOfIterations" /></th>
+					<th><spring:message code="label.countOfCombinations" /></th>
 
 				</tr>
 				<c:forEach items="${outputList}" var="output">
@@ -102,15 +99,6 @@
 						<td class="cellBlue">${output.iterationsCount}</td>
 						<td class="cellBlue">${output.combinationsCount}</td>
 					</tr>
-				</c:forEach>
-			</table>
-		</c:if>
-
-		<c:if test="${!empty result}">
-			<table
-				class="table table-bordered table-hover table-striped sortable" id="testTable">
-				<c:forEach items="${result}" var="res">
-					<td>${output.inputData.numberOfNodes}</td>
 				</c:forEach>
 			</table>
 		</c:if>
