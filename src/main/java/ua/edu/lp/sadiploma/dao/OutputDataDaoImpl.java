@@ -28,46 +28,40 @@ public class OutputDataDaoImpl extends GenericDaoImpl<OutputData> implements
 		CriteriaQuery<OutputData> query = criteriaBuilder
 				.createQuery(OutputData.class);
 		Root<OutputData> root = query.from(OutputData.class);
-		Join<OutputData, InputData> join = root.join("input_data");
+		Join<OutputData, InputData> join = root.join("inputData");
 		List<Predicate> conditions = new ArrayList<Predicate>();
 		// number of nodes
 		if (numberOfNodesFrom > 0) {
-			conditions.add(criteriaBuilder.greaterThanOrEqualTo(root
-					.<Integer> get("numberOfNodes"), criteriaBuilder.parameter(
-					Integer.class, "numberOfNodesFrom")));
+			conditions.add(criteriaBuilder.greaterThanOrEqualTo(join
+					.<Integer> get("numberOfNodes"), numberOfNodesFrom));
 		}
 		if (numberOfNodesTo > 0) {
 			conditions
-					.add(criteriaBuilder.lessThanOrEqualTo(root
-							.<Integer> get("numberOfNodes"), criteriaBuilder
-							.parameter(Integer.class, "numberOfNodesTo")));
+					.add(criteriaBuilder.lessThanOrEqualTo(join
+							.<Integer> get("numberOfNodes"), numberOfNodesTo));
 		}
 		// comment
 		if ((comment != null) && (comment != "")) {
-			conditions.add(criteriaBuilder.equal(root.<String> get("comment"),
-					criteriaBuilder.parameter(String.class, "comment")));
+			conditions.add(criteriaBuilder.equal(join.<String> get("comment"),
+					comment));
 		}
 		// start time
 		if (startTimeFrom != null) {
 			conditions.add(criteriaBuilder.greaterThanOrEqualTo(
-					root.<Date> get("startTimeFrom"),
-					criteriaBuilder.parameter(Date.class, "startTimeFrom")));
+					join.<Date> get("startTimeFrom"),startTimeFrom));
 		}
 		if (startTimeTo != null) {
 			conditions.add(criteriaBuilder.greaterThanOrEqualTo(
-					root.<Date> get("startTimeTo"),
-					criteriaBuilder.parameter(Date.class, "startTimeTo")));
+					join.<Date> get("startTimeTo"),startTimeTo));
 		}
 		// finish time
 		if (finishTimeFrom != null) {
 			conditions.add(criteriaBuilder.greaterThanOrEqualTo(
-					root.<Date> get("finishTimeFrom"),
-					criteriaBuilder.parameter(Date.class, "finishTimeFrom")));
+					join.<Date> get("finishTimeFrom"),finishTimeFrom));
 		}
 		if (finishTimeTo != null) {
 			conditions.add(criteriaBuilder.greaterThanOrEqualTo(
-					root.<Date> get("finishTimeTo"),
-					criteriaBuilder.parameter(Date.class, "finishTimeTo")));
+					join.<Date> get("finishTimeTo"),finishTimeTo));
 		}
 
 		// TypedQuery<OutputData> query =
