@@ -72,13 +72,13 @@ public class GraphViz
     * The dir. where temporary files will be created.
     */
   // private static String TEMP_DIR = "/tmp";	// Linux
-   private static String TEMP_DIR = "d:/tmp";	// Windows
+   private static String TEMP_DIR = "D:\\tomcat 7\\apache-tomcat-7.0.54\\wtpwebapps\\Diploma";	// Windows
 
    /**
     * Where is your dot program located? It will be called externally.
     */
  // private static String DOT = "/usr/bin/dot";	// Linux
-  private static String DOT = "c:/Program Files/graphviz-2.38/bin/dot.exe";	// Windows
+  private static String DOT = "D:/eclipse_old/ITAcademy/Diploma/graphviz-2.38/bin/dot.exe";	// Windows
 
    /**
     * The source of the graph written in dot language.
@@ -180,7 +180,7 @@ public class GraphViz
     * @param type Type of the output image to be produced, e.g.: gif, dot, fig, pdf, ps, svg, png.
     * @return The image of the graph in .gif format.
     */
-   private byte[] get_img_stream(File dot, String type)
+   public byte[] get_img_stream(File dot, String type)
    {
       File img;
       byte[] img_stream = null;
@@ -227,7 +227,7 @@ public class GraphViz
    {
       File temp;
       try {
-         temp = File.createTempFile("graph_", ".dot.tmp", new File(GraphViz.TEMP_DIR));
+          temp = File.createTempFile("graph_", ".dot.tmp", new File(GraphViz.TEMP_DIR));
          FileWriter fout = new FileWriter(temp);
          fout.write(str);
          fout.close();

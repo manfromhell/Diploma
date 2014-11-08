@@ -1,6 +1,12 @@
 package ua.edu.lp.sadiploma.tool;
 
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+
+import javax.imageio.ImageIO;
 
 public class Proba {
 	public static void main(String[] args) {
@@ -9,7 +15,7 @@ public class Proba {
 		// p.start2();
 	}
 
-	public void generatePicture(String parentCode) {
+	public PictureSize generatePicture(String parentCode) {
 		String[] parentCodeArr = parentCode.split(",");
 		int[] parentCodeArr2 = new int[parentCodeArr.length];
 		int[] nodeNumbers = new int[parentCodeArr.length];
@@ -28,8 +34,27 @@ public class Proba {
 		gv.addln(gv.end_graph());
 		System.err.println(gv.getDotSource());
 		String type = "gif";
-		File out = new File("D:/eclipse/projects/Diploma/out." + type); // Windows
+		File out = new File("D:/tomcat 7/apache-tomcat-7.0.54/wtpwebapps/Diploma/resources/out." + type); // Windows
 		gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type), out);
+		
+		byte[] img = gv.getGraph(gv.getDotSource(), type);
+		InputStream in = new ByteArrayInputStream(img);
+		int height=0;
+		int width=0;
+		try {
+			BufferedImage buf = ImageIO.read(in);
+			height = buf.getHeight();
+			width = buf.getWidth();
+			System.err.println("IMG height: "+height);
+			System.err.println("IMG width: "+width);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		PictureSize pictureSize = new PictureSize();
+		pictureSize.setHeight(height);
+		pictureSize.setWidth(width);
+		return pictureSize;
 	}
 
 	/**

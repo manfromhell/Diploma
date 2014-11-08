@@ -6,6 +6,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,10 +21,13 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 
+
+
 import ua.edu.lp.sadiploma.entity.InputData;
 import ua.edu.lp.sadiploma.entity.OutputData;
 import ua.edu.lp.sadiploma.service.InputDataService;
 import ua.edu.lp.sadiploma.service.OutputDataService;
+import ua.edu.lp.sadiploma.tool.PictureSize;
 import ua.edu.lp.sadiploma.tool.Proba;
 
 /**
@@ -131,11 +136,13 @@ public class HomeController {
 	}
 	
 	@RequestMapping("/getPicture")
-	public String getPicture(
-			@RequestParam(value="parentCode") String parentCode){
+	public @ResponseBody PictureSize getPicture(
+			@RequestParam(value="parentCode") String parentCode, HttpServletRequest httpServletRequest){
 		System.err.println("Parent code: "+parentCode);
 		Proba proba = new Proba();
-		proba.generatePicture(parentCode);
-		return "redirect:/observer";
+		PictureSize pictureSize = proba.generatePicture(parentCode);
+		log.info("REAL PATH: "+httpServletRequest.getSession().getServletContext().getRealPath("/tmp"));
+		return pictureSize;
+		//return "redirect:/observer";
 	}
 }

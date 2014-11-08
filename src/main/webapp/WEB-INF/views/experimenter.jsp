@@ -33,7 +33,8 @@ $('#generatePicture').click(function(){
         success : function(response) {
         	var picture = document.getElementById('picture');
        /*  picture.innerHTML = '<p>test!</p>' */
-        	picture.innerHTML='<img src="D:/eclipse/projects/Diploma/out.gif" height="100" width="100"/>'
+     //  alert(response.height);
+       picture.innerHTML='<img src="resources/out.gif" height="'+response.height+'" width="'+response.width+'"/>'
         },
         error : function(e) {
          alert('Error: ' + e); 
@@ -42,8 +43,8 @@ $('#generatePicture').click(function(){
 })
 })
   </script>
-  <div id="picture">Picture here</div>
-			<button id="generatePicture"><spring:message code="label.generatePicture" /></button>
+  <div id="picture" style="float:right;"></div>
+			<button id="generatePicture" style="float:right;"><spring:message code="label.generatePicture" /></button>
 		<form:form commandName="inputData" action="setData" method="POST"
 			class="form-horizontal form-validate form-container">
 			<form:label path="parentCode" class="form-title"><spring:message code="label.parentCode" /></form:label>
@@ -60,15 +61,15 @@ $('#generatePicture').click(function(){
 			<br>
 			<br>
 			<form:label path="initTemp" class="form-title"><spring:message code="label.initTemp" /></form:label>
-			<form:input path="initTemp" value="100" class="form-field" type="number" min="0"/>
+			<form:input path="initTemp" value="10000" class="form-field" type="number" min="0"/>
 			<br>
 			<br>
 			<form:label path="finalTemp" class="form-title"><spring:message code="label.finalTemp" /></form:label>
-			<form:input path="finalTemp" value="10" class="form-field" type="number" min="0"/>
+			<form:input path="finalTemp" value="1" class="form-field" type="number" min="0"/>
 			<br>
 			<br>
 			<form:label path="alpha" class="form-title"><spring:message code="label.alpha" /></form:label>
-			<form:input path="alpha" value="0.99" class="form-field" type="number" min="0" max = "1" step="0.001"/>
+			<form:input path="alpha" value="0.999" class="form-field" type="number" min="0" max = "1" step="0.001"/>
 			<br>
 			<br>
 			<form:label path="iterationsPerTemperature" class="form-title"><spring:message code="label.iterations" /></form:label>
