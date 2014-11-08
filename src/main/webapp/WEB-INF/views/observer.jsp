@@ -56,25 +56,25 @@
 		<c:if test="${!empty outputList}">
 			<table class="table table-bordered table-hover table-striped sortable">
 				<tr>
-					<th><spring:message code="label.treeType" /></th>
-					<th><spring:message code="label.numberOfNodes" /></th>
-					<th><spring:message code="label.parentCode" /></th>
-					<th><spring:message code="label.gapsCoef" /></th>
-					<th><spring:message code="label.repeatsCoef" /></th>
-					<th><spring:message code="label.comment" /></th>
+					<th style="font-size: 75%"><spring:message code="label.treeType" /></th>
+					<th style="font-size: 75%"><spring:message code="label.numberOfNodes" /></th>
+					<th style="font-size: 75%"><spring:message code="label.parentCode" /></th>
+				<%-- 	<th style="font-size: 75%"><spring:message code="label.gapsCoef" /></th>
+					<th style="font-size: 75%"><spring:message code="label.repeatsCoef" /></th> --%>
+					<th style="font-size: 75%"><spring:message code="label.comment" /></th>
 
-					<th><spring:message code="label.initTemp" /></th>
-					<th><spring:message code="label.finalTemp" /></th>
-					<th><spring:message code="label.iterations" /></th>
-					<th><spring:message code="label.alpha" /></th>
+					<th style="font-size: 75%"><spring:message code="label.initTemp" /></th>
+					<th style="font-size: 75%"><spring:message code="label.finalTemp" /></th>
+					<th style="font-size: 75%"><spring:message code="label.iterations" /></th>
+					<th style="font-size: 75%"><spring:message code="label.alpha" /></th>
 
-					<th><spring:message code="label.startTime" /></th>
-					<th><spring:message code="label.finishTime" /></th>
-					<th><spring:message code="label.resultMarks" /></th>
-					<th><spring:message code="label.energy" /></th>
-					<th><spring:message code="label.fitness" /></th>
-					<th><spring:message code="label.realCountOfIterations" /></th>
-					<th><spring:message code="label.countOfCombinations" /></th>
+					<th style="font-size: 75%"><spring:message code="label.startTime" /></th>
+					<th style="font-size: 75%"><spring:message code="label.finishTime" /></th>
+					<th style="font-size: 75%"><spring:message code="label.resultMarks" /></th>
+					<th style="font-size: 75%"><spring:message code="label.energy" /></th>
+					<th style="font-size: 75%"><spring:message code="label.fitness" /></th>
+					<th style="font-size: 75%"><spring:message code="label.realCountOfIterations" /></th>
+					<th style="font-size: 75%"><spring:message code="label.countOfCombinations" /></th>
 
 				</tr>
 				<c:forEach items="${outputList}" var="output">
@@ -82,8 +82,8 @@
 						<td class="cellRed">${output.inputData.treeType}</td>
 						<td class="cellRed">${output.inputData.numberOfNodes}</td>
 						<td class="cellRed">${output.inputData.parentCode}</td>
-						<td class="cellRed">${output.inputData.gapsCoef}</td>
-						<td class="cellRed">${output.inputData.repCoef}</td>
+						<%-- <td class="cellRed">${output.inputData.gapsCoef}</td>
+						<td class="cellRed">${output.inputData.repCoef}</td> --%>
 						<td class="cellRed">${output.inputData.comment}</td>
 
 						<td class="cellGreen">${output.inputData.initTemp}</td>

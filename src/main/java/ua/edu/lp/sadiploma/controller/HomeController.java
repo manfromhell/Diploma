@@ -139,9 +139,9 @@ public class HomeController {
 	public @ResponseBody PictureSize getPicture(
 			@RequestParam(value="parentCode") String parentCode, HttpServletRequest httpServletRequest){
 		System.err.println("Parent code: "+parentCode);
+		log.info("REAL PATH: "+httpServletRequest.getSession().getServletContext().getRealPath("/tmp"));
 		Proba proba = new Proba();
 		PictureSize pictureSize = proba.generatePicture(parentCode);
-		log.info("REAL PATH: "+httpServletRequest.getSession().getServletContext().getRealPath("/tmp"));
 		return pictureSize;
 		//return "redirect:/observer";
 	}

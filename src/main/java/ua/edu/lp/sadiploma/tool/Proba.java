@@ -34,7 +34,7 @@ public class Proba {
 		gv.addln(gv.end_graph());
 		System.err.println(gv.getDotSource());
 		String type = "gif";
-		File out = new File("D:/tomcat 7/apache-tomcat-7.0.54/wtpwebapps/Diploma/resources/out." + type); // Windows
+		File out = new File("C:/Program Files/xampp/tomcat/wtpwebapps/Diploma/resources/out." + type); // Windows
 		gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type), out);
 		
 		byte[] img = gv.getGraph(gv.getDotSource(), type);
