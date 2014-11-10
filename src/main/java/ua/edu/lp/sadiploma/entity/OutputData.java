@@ -142,4 +142,12 @@ public class OutputData {
 	public void setFitness(Integer fitness) {
 		this.fitness = fitness;
 	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
 }

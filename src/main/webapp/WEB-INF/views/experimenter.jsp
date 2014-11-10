@@ -139,7 +139,7 @@
         <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
         Your files have downloaded successfully into the My Downloads folder.
     </p>
-    <img src="resources/out.gif" height="100" width="100"/>
+    <img src="image.ico" height="100" width="100"/>
 </div>
 <a href="#" id="thelink">Clickme</a>
 
