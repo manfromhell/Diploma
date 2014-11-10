@@ -28,13 +28,14 @@ public class Proba {
 		GraphViz gv = new GraphViz();
 		gv.addln(gv.start_graph());
 		for (int i=1; i<parentCodeArr.length; i++){
-			gv.addln(parentCodeArr[i]+" -> "+nodeNumbers[i]);
-			System.err.println("Line added: "+nodeNumbers[i]+" -> "+parentCodeArr[i]);
+			//gv.addln(parentCodeArr[i]+" -> "+nodeNumbers[i]);
+			gv.add(parentCodeArr[i]+" -- "+nodeNumbers[i]);
+			System.err.println("Line added: "+nodeNumbers[i]+" -- "+parentCodeArr[i]);
 		}
 		gv.addln(gv.end_graph());
 		System.err.println(gv.getDotSource());
 		String type = "gif";
-		File out = new File("C:/Program Files/xampp/tomcat/wtpwebapps/Diploma/resources/out." + type); // Windows
+		File out = new File("D:/apache-tomcat-7.0.55-windows-x64/apache-tomcat-7.0.55/wtpwebapps/Diploma/resources/out." + type); // Windows
 		gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type), out);
 		
 		byte[] img = gv.getGraph(gv.getDotSource(), type);

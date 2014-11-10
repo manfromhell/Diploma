@@ -24,6 +24,8 @@
 	rel="stylesheet" type="text/css" />
 <link href="<c:url value="/resources/css/jquery.timepicker.css" />"
 	rel="stylesheet" type="text/css" />
+<link href="<c:url value="/resources/css/jquery-ui.css" />"
+	rel="stylesheet" type="text/css" />
 <%-- <link href="<c:url value="/resources/css/pickmeup.min.css" />"
 	rel="stylesheet" type="text/css" />  --%>
 	<link href="<c:url value="/resources/js/jquery.validate.js" />"
@@ -39,6 +41,7 @@
 <script src="<c:url value="/resources/js/jquery.js" />"></script>
 <script src="<c:url value="/resources/js/jquery.datetimepicker.js" />"></script>
 <script src="<c:url value="/resources/js/colResizable-1.3.min.js" />"></script>
+<script src="<c:url value="/resources/js/jquery-ui.js" />"></script>
 <!-- <link rel="stylesheet" href="/css/style.css" type="text/css"/>
 Bootstrap
     <link href="css/bootstrap.min.css" rel="stylesheet">

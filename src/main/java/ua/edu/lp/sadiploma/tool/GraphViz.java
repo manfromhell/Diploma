@@ -72,13 +72,15 @@ public class GraphViz
     * The dir. where temporary files will be created.
     */
   // private static String TEMP_DIR = "/tmp";	// Linux
-   private static String TEMP_DIR = "C:\\Program Files\\xampp\\tomcat\\wtpwebapps\\Diploma";	// Windows
+ //  private static String TEMP_DIR = "C:\\Program Files\\xampp\\tomcat\\wtpwebapps\\Diploma";	// Windows
+	private static String TEMP_DIR = "D:/apache-tomcat-7.0.55-windows-x64/apache-tomcat-7.0.55/wtpwebapps/Diploma";
 
    /**
     * Where is your dot program located? It will be called externally.
     */
  // private static String DOT = "/usr/bin/dot";	// Linux
-  private static String DOT = "C:\\Program Files\\xampp\\tomcat\\wtpwebapps\\Diploma\\graphviz-2.38\\bin\\dot.exe";	// Windows
+  //private static String DOT = "C:\\Program Files\\xampp\\tomcat\\wtpwebapps\\Diploma\\graphviz-2.38\\bin\\dot.exe";	// Windows
+  private static String DOT = "D:/apache-tomcat-7.0.55-windows-x64/apache-tomcat-7.0.55/wtpwebapps/Diploma/graphviz-2.38/bin/dot.exe";
 
    /**
     * The source of the graph written in dot language.
