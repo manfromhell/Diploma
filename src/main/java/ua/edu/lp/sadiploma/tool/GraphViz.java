@@ -31,6 +31,7 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 /**
  * <dl>
@@ -73,14 +74,14 @@ public class GraphViz
     */
   // private static String TEMP_DIR = "/tmp";	// Linux
  //  private static String TEMP_DIR = "C:\\Program Files\\xampp\\tomcat\\wtpwebapps\\Diploma";	// Windows
-	private static String TEMP_DIR = "D:/apache-tomcat-7.0.55-windows-x64/apache-tomcat-7.0.55/wtpwebapps/Diploma";
+	private String TEMP_DIR;//"C:\\apache-tomcat-7.0.54\\wtpwebapps\\Diploma\\";
 
    /**
     * Where is your dot program located? It will be called externally.
     */
  // private static String DOT = "/usr/bin/dot";	// Linux
   //private static String DOT = "C:\\Program Files\\xampp\\tomcat\\wtpwebapps\\Diploma\\graphviz-2.38\\bin\\dot.exe";	// Windows
-  private static String DOT = "D:/apache-tomcat-7.0.55-windows-x64/apache-tomcat-7.0.55/wtpwebapps/Diploma/graphviz-2.38/bin/dot.exe";
+  private static String DOT;
 
    /**
     * The source of the graph written in dot language.
@@ -91,10 +92,12 @@ public class GraphViz
     * Constructor: creates a new GraphViz object that will contain
     * a graph.
     */
-   public GraphViz() {
-   }
+   public GraphViz(String tmpPath) {
+	   DOT = tmpPath+"graphviz-2.38\\bin\\dot.exe";
+	   TEMP_DIR = tmpPath+"resources";
+}
 
-   /**
+/**
     * Returns the graph's source description in dot language.
     * @return Source of the graph in dot language.
     */
@@ -113,14 +116,14 @@ public class GraphViz
     * Adds a string to the graph's source (with newline).
     */
    public void addln(String line) {
-      graph.append(line + "\n");
+      graph.append(line + "\r\n");
    }
 
    /**
     * Adds a newline to the graph's source.
     */
    public void addln() {
-      graph.append('\n');
+      graph.append("\r\n");
    }
 
    /**
@@ -188,11 +191,14 @@ public class GraphViz
       byte[] img_stream = null;
 
       try {
-         img = File.createTempFile("graph_", "."+type, new File(GraphViz.TEMP_DIR));
+         img = File.createTempFile("graph_", "."+type, new File(this.TEMP_DIR));
          Runtime rt = Runtime.getRuntime();
          
          // patch by Mike Chenault
-         String[] args = {DOT, "-T"+type, dot.getAbsolutePath(), "-o", img.getAbsolutePath()};
+         System.err.println("dot abs path: "+dot.getAbsolutePath());
+         System.err.println("img abs path: "+img.getAbsolutePath());
+         String[] args = {DOT, "-T",type, dot.getAbsolutePath(), "-o", img.getAbsolutePath()};
+         System.err.println("DOT args: "+Arrays.toString(args));
          Process p = rt.exec(args);
          
          p.waitFor();
@@ -207,7 +213,7 @@ public class GraphViz
             System.err.println("Warning: " + img.getAbsolutePath() + " could not be deleted!");
       }
       catch (java.io.IOException ioe) {
-         System.err.println("Error:    in I/O processing of tempfile in dir " + GraphViz.TEMP_DIR+"\n");
+         System.err.println("Error:    in I/O processing of tempfile in dir " + this.TEMP_DIR+"\n");
          System.err.println("       or in calling external command");
          ioe.printStackTrace();
       }
@@ -229,7 +235,7 @@ public class GraphViz
    {
       File temp;
       try {
-          temp = File.createTempFile("graph_", ".dot.tmp", new File(GraphViz.TEMP_DIR));
+          temp = File.createTempFile("graph_", ".dot.tmp", new File(this.TEMP_DIR));
          FileWriter fout = new FileWriter(temp);
          fout.write(str);
          fout.close();
@@ -246,7 +252,7 @@ public class GraphViz
     * @return A string to open a graph.
     */
    public String start_graph() {
-      return "digraph G {";
+      return "graph G {";
    }
 
    /**

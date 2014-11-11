@@ -174,7 +174,7 @@ public class Node implements Component {
 	}
 
 	public static Component generateTree(String parentCode) {
-		String[] parentCodeArray = parentCode.split("[, /;-]|(, )");
+		String[] parentCodeArray = parentCode.split("[\\D]+");
 		List<Integer> intParentCode = new ArrayList<Integer>();
 		int[] dataArrayInt = new int[parentCodeArray.length];
 
