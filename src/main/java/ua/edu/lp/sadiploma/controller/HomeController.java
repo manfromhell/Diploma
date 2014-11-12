@@ -14,10 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 
 
 
@@ -133,6 +135,14 @@ public class HomeController {
 		System.err.println("Result of request!!!: "+result.toString());
 		model.addAttribute("outputList",result);
 		return "observer";
+	}
+
+	@RequestMapping(value="/info/{id}", method=RequestMethod.GET)
+	public String info(@PathVariable(value="id") Long id, Model model){
+		OutputData result = outputDataService.findById(id);
+		System.err.println("Result of info: "+result.toString());
+		model.addAttribute("output",result);
+		return "output_info";
 	}
 	
 	@RequestMapping("/getPicture")

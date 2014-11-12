@@ -119,7 +119,7 @@
 				<tbody>
 				<c:forEach items="${outputList}" var="output">
 					<tr>
-						<td class="cellRed"><a href="info${output.id}">${output.inputData.treeType}</a></td>
+						<td class="cellRed"><a href="info/${output.id}">${output.inputData.treeType}</a></td>
 						<td class="cellRed">${output.inputData.numberOfNodes}</td>
 						<td class="cellRed">${output.inputData.parentCode}</td>
 						<%-- <td class="cellRed">${output.inputData.gapsCoef}</td>
