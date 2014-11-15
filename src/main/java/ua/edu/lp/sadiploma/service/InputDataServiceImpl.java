@@ -60,10 +60,10 @@ public class InputDataServiceImpl implements InputDataService {
 	public String getTreeType(double repsCoef, double gapsCoef){
 		//ResourceBundle rb = ResourceBundle.getBundle(baseName)
 		if (repsCoef>gapsCoef){
-			return "Restricted Leech Trees";
+			return "Golomb Trees";
 		}
 		if (gapsCoef>repsCoef){
-			return "Golomb Trees";
+			return "Restricted Leech Trees";
 		}
 		return "Unrestricted Leech Trees";
 	}
