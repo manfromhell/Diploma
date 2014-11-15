@@ -9,19 +9,28 @@
 <tiles:insertDefinition name="base-template">
 	<tiles:putAttribute name="body">
 
-		<spring:message code="label.initTemp" />
-		${output.inputData.initTemp}
-		<spring:message code="label.finalTemp" />
-		${output.inputData.finalTemp}
-		<spring:message code="label.iterations" />
-		${output.inputData.iterationsPerTemperature}
-		<spring:message code="label.alpha" />
-		${output.inputData.iterationsPerTemperature}
-		<spring:message code="label.realCountOfIterations" />
-		${output.iterationsCount}
-		<spring:message code="label.countOfCombinations" />
-		${output.combinationsCount}
-
+		<table>
+		<tr>
+		<td><spring:message code="label.initTemp" /></td>
+		<td>${output.inputData.initTemp}</td>
+		</tr>
+		<tr>
+		<td><spring:message code="label.iterations" /></td>
+		<td>${output.inputData.iterationsPerTemperature}</td>
+		</tr>
+		<tr>
+		<td><spring:message code="label.alpha" /></td>
+		<td>${output.inputData.iterationsPerTemperature}</td>
+		</tr>
+		<tr>
+		<td><spring:message code="label.realCountOfIterations" /></td>
+		<td>${output.iterationsCount}</td>
+		</tr>
+		<tr>
+		<td><spring:message code="label.countOfCombinations" /></td>
+		<td>${output.combinationsCount}</td>
+		</tr>
+		</table>
 
 	</tiles:putAttribute>
 </tiles:insertDefinition>

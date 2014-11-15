@@ -78,13 +78,11 @@
 			<form:input path="parentCode" value="0,1,2,3,4,5,6"
 				class="form-field" id="parentCode" />
 			<br>
-			<br>
 			<form:label path="gapsCoef" class="form-title">
 				<spring:message code="label.gapsCoef" />
 			</form:label>
 			<form:input path="gapsCoef" type="text" id="textInputG"
 				readonly="true" class="form-field" value="1" />
-			<br>
 			<br>
 			<form:label path="repCoef" class="form-title">
 				<spring:message code="label.repeatsCoef" />
@@ -94,20 +92,11 @@
 			<input value="100" type="range" MIN="-100" MAX="100" STEP="100"
 				id="spinner" />
 			<br>
-			<br>
 			<form:label path="initTemp" class="form-title">
 				<spring:message code="label.initTemp" />
 			</form:label>
 			<form:input path="initTemp" value="10000" class="form-field"
 				type="number" min="0" />
-			<br>
-			<br>
-			<form:label path="finalTemp" class="form-title">
-				<spring:message code="label.finalTemp" />
-			</form:label>
-			<form:input path="finalTemp" value="1" class="form-field"
-				type="number" min="0" />
-			<br>
 			<br>
 			<form:label path="alpha" class="form-title">
 				<spring:message code="label.alpha" />
@@ -115,19 +104,16 @@
 			<form:input path="alpha" value="0.999" class="form-field"
 				type="number" min="0" max="1" step="0.001" />
 			<br>
-			<br>
 			<form:label path="iterationsPerTemperature" class="form-title">
 				<spring:message code="label.iterations" />
 			</form:label>
 			<form:input path="iterationsPerTemperature" value="5"
 				class="form-field" type="number" min="0" />
 			<br>
-			<br>
 			<form:label path="comment" class="form-title">
 				<spring:message code="label.comment" />
 			</form:label>
 			<form:input path="comment" class="form-field" />
-			<br>
 			<br>
 			<form:button type="submit">
 				<spring:message code="label.calculate" />
