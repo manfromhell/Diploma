@@ -85,19 +85,8 @@
 							code="label.numberOfNodes" /></th>
 					<th style="font-size: 75%; background-color: red;"><spring:message
 							code="label.parentCode" /></th>
-					<%-- 	<th style="font-size: 75%"><spring:message code="label.gapsCoef" /></th>
-					<th style="font-size: 75%"><spring:message code="label.repeatsCoef" /></th> --%>
 					<th style="font-size: 75%; background-color: red;"><spring:message
 							code="label.comment" /></th>
-
-					<th style="font-size: 75%; background-color: green;"><spring:message
-							code="label.initTemp" /></th>
-					<th style="font-size: 75%; background-color: green;"><spring:message
-							code="label.finalTemp" /></th>
-					<th style="font-size: 75%; background-color: green;"><spring:message
-							code="label.iterations" /></th>
-					<th style="font-size: 75%; background-color: green;"><spring:message
-							code="label.alpha" /></th>
 
 					<th style="font-size: 75%; background-color: blue;"><spring:message
 							code="label.startTime" /></th>
@@ -109,11 +98,6 @@
 							code="label.energy" /></th>
 					<th style="font-size: 75%; background-color: blue;"><spring:message
 							code="label.fitness" /></th>
-					<th style="font-size: 75%; background-color: blue;"><spring:message
-							code="label.realCountOfIterations" /></th>
-					<th style="font-size: 75%; background-color: blue;"><spring:message
-							code="label.countOfCombinations" /></th>
-
 				</tr>
 				</thead>
 				<tbody>
@@ -122,22 +106,13 @@
 						<td class="cellRed"><a href="info/${output.id}">${output.inputData.treeType}</a></td>
 						<td class="cellRed">${output.inputData.numberOfNodes}</td>
 						<td class="cellRed">${output.inputData.parentCode}</td>
-						<%-- <td class="cellRed">${output.inputData.gapsCoef}</td>
-						<td class="cellRed">${output.inputData.repCoef}</td> --%>
 						<td class="cellRed">${output.inputData.comment}</td>
-
-						<td class="cellGreen">${output.inputData.initTemp}</td>
-						<td class="cellGreen">${output.inputData.finalTemp}</td>
-						<td class="cellGreen">${output.inputData.iterationsPerTemperature}</td>
-						<td class="cellGreen">${output.inputData.alpha}</td>
 
 						<td class="cellBlue"><fmt:formatDate value="${output.startTime}" pattern="dd.MM.yyyy HH:mm:ss" /></td>
 						<td class="cellBlue"><fmt:formatDate value="${output.finishTime}" pattern="dd.MM.yyyy HH:mm:ss" /></td>
 						<td class="cellBlue">${output.resultNumbers}</td>
 						<td class="cellBlue">${output.solutionEnergy}</td>
 						<td class="cellBlue">${output.fitness}</td>
-						<td class="cellBlue">${output.iterationsCount}</td>
-						<td class="cellBlue">${output.combinationsCount}</td>
 					</tr>
 				</c:forEach>
 				</tbody>
