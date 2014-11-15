@@ -1,6 +1,7 @@
 package ua.edu.lp.sadiploma.tool;
 
 import java.util.Date;
+import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -49,6 +50,8 @@ public class SimAnnealing implements Runnable {
 	@Override
 	public void run() {
 		log.info(dataService.findAll().toString());
+		inputData.setDone(true);
+		inputDataService.update(inputData);
 		OutputData entity = new OutputData();
 		entity.setInputData(inputData);
 		entity.setStartTime(new Date(System.currentTimeMillis()));
@@ -89,8 +92,15 @@ public class SimAnnealing implements Runnable {
 
 		entity.setIterationsCount(iterations);
 		entity.setFitness(bestSolution.getFitness());
-		entity.setResultNumbers(bestSolution.getBundle().getData()
-				.getAllValues().toString());
+		List<Integer> allValues = bestSolution.getBundle().getData().getAllValues();
+		StringBuilder resultNumbers = new StringBuilder();
+		for ( int i = 0; i < allValues.size() ; i++) {
+			resultNumbers.append(allValues.get(i));
+			if (i < allValues.size()-1) {
+				resultNumbers.append(", ");
+			}
+		}
+		entity.setResultNumbers(resultNumbers.toString());
 		entity.setFinishTime(new Date(System.currentTimeMillis()));
 		entity.setCombinationsCount(bestSolution.getBundle()
 				.generateCombinations().size());
@@ -99,8 +109,6 @@ public class SimAnnealing implements Runnable {
 				+ bestSolution.getBundle().generateCombinations().size());
 		entity.setSolutionEnergy(bestSolution.getSolutionEnergy());
 		dataService.create(entity);
-		inputData.setDone(true);
-		inputDataService.update(inputData);
 	}
 
 	/**

@@ -21,7 +21,7 @@ public class ScheduleService {
 
 	private static final Logger log = LoggerFactory
 			.getLogger(ScheduleService.class);
-	private ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 2, 600, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(1024));
+	private ThreadPoolExecutor executor = new ThreadPoolExecutor(2, 2, 6000, TimeUnit.SECONDS, new ArrayBlockingQueue<Runnable>(1024));
 
 	@Autowired
 	private InputDataService inputDataService;
@@ -31,7 +31,7 @@ public class ScheduleService {
 
 	@Scheduled(fixedDelay = 60000)
 	public void checkInputData() {
-		log.info("check db, delay = 15s");
+		log.info("check db, delay = 1m");
 		List<InputData> list = inputDataService.findUnchecked(2);
 		if (executor.getActiveCount()<=2) {
 			for (InputData data : list) {
