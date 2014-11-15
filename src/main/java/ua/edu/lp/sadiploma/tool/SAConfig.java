@@ -8,12 +8,12 @@ public class SAConfig {
 	private double GAPS_KOEF;
 	private double REP_KOEF;
 
-	public SAConfig(double initialTemperature, double finalTemperature,
+	public SAConfig(double initialTemperature,
 			double alpha, int iterationsAtTemperature, double gapsKoef,
 			double repKoef) {
 		super();
 		INITIAL_TEMPERATURE = initialTemperature;
-		FINAL_TEMPERATURE = finalTemperature;
+		FINAL_TEMPERATURE = 1;
 		ALPHA = alpha;
 		ITERATIONS_PER_TEMPERATURE = iterationsAtTemperature;
 		GAPS_KOEF = gapsKoef;
