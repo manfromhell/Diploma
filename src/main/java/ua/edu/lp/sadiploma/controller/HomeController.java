@@ -153,6 +153,5 @@ public class HomeController {
 		Proba proba = new Proba(httpServletRequest.getSession().getServletContext().getRealPath("/"));
 		PictureSize pictureSize = proba.generatePicture(parentCode);
 		return pictureSize;
-		//return "redirect:/observer";
 	}
 }

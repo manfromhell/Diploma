@@ -1,8 +1,8 @@
 @CHARSET "UTF-8";
-body {
+/* body {
 	color: #000;
 	background-color: #eee;
-}
+} */
 
 h1 {
 	border-bottom: 1px dotted #888;
@@ -37,18 +37,18 @@ h1 {
 table {
 	table-layout: fixed;
 	overflow: hidden;
-	border: 1px solid #bbb;
+	/* border: 1px solid #bbb; */
 }
 
 th {
 	color: #000;
-	background-color: #bbb;
-	border: 1px outset;
+/* 	background-color: #bbb;
+	border: 1px outset; */
 }
 
 td {
- 	color: #000;
-	background-color: #eee;
+ 	/* color: #000;
+	background-color: #eee; */
 }
 
 img { border:0px; }

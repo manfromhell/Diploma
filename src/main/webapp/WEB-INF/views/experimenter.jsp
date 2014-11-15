@@ -35,6 +35,7 @@
 													}
 												})
 
+/* 								$('#thelink') */
 								$('#generatePicture')
 										.click(
 												function() {
@@ -49,9 +50,12 @@
 																		+ parentCode,
 																success : function(
 																		response) {
-																	var picture = document
+/* 																	var picture = document
 																			.getElementById('picture');
+	 */																var picture = document
+																	.getElementById('thedialog');
 																	picture.innerHTML = '<img src="resources/out.gif" height="'+response.height+'" width="'+response.width+'"/>'
+																	$('div#thedialog').dialog('open');
 																},
 																error : function(
 																		e) {
@@ -119,13 +123,8 @@
 		</form:form>
 
 		<div id="thedialog" title="Download complete">
-    <p>
-        <span class="ui-icon ui-icon-circle-check" style="float:left; margin:0 7px 50px 0;"></span>
-        Your files have downloaded successfully into the My Downloads folder.
-    </p>
     <img src="image.ico" height="100" width="100"/>
 </div>
-<a href="#" id="thelink">Clickme</a>
 
 	</tiles:putAttribute>
 </tiles:insertDefinition>
