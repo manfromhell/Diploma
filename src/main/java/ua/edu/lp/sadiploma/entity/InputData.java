@@ -20,7 +20,6 @@ public class InputData {
 
 	private String parentCode;
 	private double initTemp;
-	private double finalTemp;
 	private int iterationsPerTemperature;
 	private double alpha;
 	private double gapsCoef;
@@ -92,21 +91,6 @@ public class InputData {
 	}
 
 	/**
-	 * @return the finalTemp
-	 */
-	public double getFinalTemp() {
-		return finalTemp;
-	}
-
-	/**
-	 * @param finalTemp
-	 *            the finalTemp to set
-	 */
-	public void setFinalTemp(double finalTemp) {
-		this.finalTemp = finalTemp;
-	}
-
-	/**
 	 * @return the tempIter
 	 */
 	public int getTempIter() {
@@ -145,102 +129,18 @@ public class InputData {
 		this.repCoef = repCoef;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
+	/* (non-Javadoc)
 	 * @see java.lang.Object#toString()
 	 */
 	@Override
 	public String toString() {
 		return "InputData [parentCode=" + parentCode + ", initTemp=" + initTemp
-				+ ", finalTemp=" + finalTemp + ", iterationsPerTemperature="
-				+ iterationsPerTemperature + ", alpha=" + alpha + ", gapsCoef="
-				+ gapsCoef + ", repCoef=" + repCoef + ", id=" + id + ", created="
-				+ created + ", outputData=" + outputData + "]";
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#hashCode()
-	 */
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		long temp;
-		temp = Double.doubleToLongBits(alpha);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((created == null) ? 0 : created.hashCode());
-		temp = Double.doubleToLongBits(finalTemp);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		temp = Double.doubleToLongBits(gapsCoef);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		temp = Double.doubleToLongBits(initTemp);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		result = prime * result + iterationsPerTemperature;
-		result = prime * result
-				+ ((outputData == null) ? 0 : outputData.hashCode());
-		result = prime * result
-				+ ((parentCode == null) ? 0 : parentCode.hashCode());
-		temp = Double.doubleToLongBits(repCoef);
-		result = prime * result + (int) (temp ^ (temp >>> 32));
-		return result;
-	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#equals(java.lang.Object)
-	 */
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		InputData other = (InputData) obj;
-		if (Double.doubleToLongBits(alpha) != Double
-				.doubleToLongBits(other.alpha))
-			return false;
-		if (created == null) {
-			if (other.created != null)
-				return false;
-		} else if (!created.equals(other.created))
-			return false;
-		if (Double.doubleToLongBits(finalTemp) != Double
-				.doubleToLongBits(other.finalTemp))
-			return false;
-		if (Double.doubleToLongBits(gapsCoef) != Double
-				.doubleToLongBits(other.gapsCoef))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (Double.doubleToLongBits(initTemp) != Double
-				.doubleToLongBits(other.initTemp))
-			return false;
-		if (iterationsPerTemperature != other.iterationsPerTemperature)
-			return false;
-		if (outputData == null) {
-			if (other.outputData != null)
-				return false;
-		} else if (!outputData.equals(other.outputData))
-			return false;
-		if (parentCode == null) {
-			if (other.parentCode != null)
-				return false;
-		} else if (!parentCode.equals(other.parentCode))
-			return false;
-		if (Double.doubleToLongBits(repCoef) != Double
-				.doubleToLongBits(other.repCoef))
-			return false;
-		return true;
+				+ ", iterationsPerTemperature=" + iterationsPerTemperature
+				+ ", alpha=" + alpha + ", gapsCoef=" + gapsCoef + ", repCoef="
+				+ repCoef + ", done=" + done + ", treeType=" + treeType
+				+ ", numberOfNodes=" + numberOfNodes + ", comment=" + comment
+				+ ", id=" + id + ", created=" + created + ", outputData="
+				+ outputData + "]";
 	}
 
 	/**
@@ -286,6 +186,122 @@ public class InputData {
 	 */
 	public void setComment(String comment) {
 		this.comment = comment;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		long temp;
+		temp = Double.doubleToLongBits(alpha);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
+		result = prime * result + ((created == null) ? 0 : created.hashCode());
+		result = prime * result + (done ? 1231 : 1237);
+		temp = Double.doubleToLongBits(gapsCoef);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		temp = Double.doubleToLongBits(initTemp);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result + iterationsPerTemperature;
+		result = prime * result + numberOfNodes;
+		result = prime * result
+				+ ((outputData == null) ? 0 : outputData.hashCode());
+		result = prime * result
+				+ ((parentCode == null) ? 0 : parentCode.hashCode());
+		temp = Double.doubleToLongBits(repCoef);
+		result = prime * result + (int) (temp ^ (temp >>> 32));
+		result = prime * result
+				+ ((treeType == null) ? 0 : treeType.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (!(obj instanceof InputData)) {
+			return false;
+		}
+		InputData other = (InputData) obj;
+		if (Double.doubleToLongBits(alpha) != Double
+				.doubleToLongBits(other.alpha)) {
+			return false;
+		}
+		if (comment == null) {
+			if (other.comment != null) {
+				return false;
+			}
+		} else if (!comment.equals(other.comment)) {
+			return false;
+		}
+		if (created == null) {
+			if (other.created != null) {
+				return false;
+			}
+		} else if (!created.equals(other.created)) {
+			return false;
+		}
+		if (done != other.done) {
+			return false;
+		}
+		if (Double.doubleToLongBits(gapsCoef) != Double
+				.doubleToLongBits(other.gapsCoef)) {
+			return false;
+		}
+		if (id == null) {
+			if (other.id != null) {
+				return false;
+			}
+		} else if (!id.equals(other.id)) {
+			return false;
+		}
+		if (Double.doubleToLongBits(initTemp) != Double
+				.doubleToLongBits(other.initTemp)) {
+			return false;
+		}
+		if (iterationsPerTemperature != other.iterationsPerTemperature) {
+			return false;
+		}
+		if (numberOfNodes != other.numberOfNodes) {
+			return false;
+		}
+		if (outputData == null) {
+			if (other.outputData != null) {
+				return false;
+			}
+		} else if (!outputData.equals(other.outputData)) {
+			return false;
+		}
+		if (parentCode == null) {
+			if (other.parentCode != null) {
+				return false;
+			}
+		} else if (!parentCode.equals(other.parentCode)) {
+			return false;
+		}
+		if (Double.doubleToLongBits(repCoef) != Double
+				.doubleToLongBits(other.repCoef)) {
+			return false;
+		}
+		if (treeType == null) {
+			if (other.treeType != null) {
+				return false;
+			}
+		} else if (!treeType.equals(other.treeType)) {
+			return false;
+		}
+		return true;
 	}
 
 }

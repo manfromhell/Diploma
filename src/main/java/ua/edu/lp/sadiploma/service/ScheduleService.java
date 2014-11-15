@@ -29,7 +29,7 @@ public class ScheduleService {
 	@Autowired
 	private OutputDataService outputDataService;
 
-	@Scheduled(fixedDelay = 15000)
+	@Scheduled(fixedDelay = 60000)
 	public void checkInputData() {
 		log.info("check db, delay = 15s");
 		List<InputData> list = inputDataService.findUnchecked(2);
@@ -40,7 +40,7 @@ public class ScheduleService {
 						.generateTree(data.getParentCode());
 
 				SAConfig config = new SAConfig(data.getInitTemp(),
-						data.getFinalTemp(), data.getAlpha(),
+						data.getAlpha(),
 						data.getIterationsPerTemperature(), data.getGapsCoef(),
 						data.getRepCoef());
 

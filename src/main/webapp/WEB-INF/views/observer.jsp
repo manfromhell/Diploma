@@ -93,8 +93,6 @@
 					<th style="font-size: 75%; background-color: green;"><spring:message
 							code="label.initTemp" /></th>
 					<th style="font-size: 75%; background-color: green;"><spring:message
-							code="label.finalTemp" /></th>
-					<th style="font-size: 75%; background-color: green;"><spring:message
 							code="label.iterations" /></th>
 					<th style="font-size: 75%; background-color: green;"><spring:message
 							code="label.alpha" /></th>
@@ -127,7 +125,6 @@
 						<td class="cellRed">${output.inputData.comment}</td>
 
 						<td class="cellGreen">${output.inputData.initTemp}</td>
-						<td class="cellGreen">${output.inputData.finalTemp}</td>
 						<td class="cellGreen">${output.inputData.iterationsPerTemperature}</td>
 						<td class="cellGreen">${output.inputData.alpha}</td>
 
