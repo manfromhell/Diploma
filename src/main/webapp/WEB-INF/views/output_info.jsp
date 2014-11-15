@@ -9,7 +9,7 @@
 <tiles:insertDefinition name="base-template">
 	<tiles:putAttribute name="body">
 
-		<table>
+		<table class="table table-bordered table-hover table-striped sortable resizable" width="100%">
 		<tr>
 		<td><spring:message code="label.initTemp" /></td>
 		<td>${output.inputData.initTemp}</td>
@@ -20,7 +20,7 @@
 		</tr>
 		<tr>
 		<td><spring:message code="label.alpha" /></td>
-		<td>${output.inputData.iterationsPerTemperature}</td>
+		<td>${output.inputData.alpha}</td>
 		</tr>
 		<tr>
 		<td><spring:message code="label.realCountOfIterations" /></td>

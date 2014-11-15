@@ -51,8 +51,6 @@
 																		response) {
 																	var picture = document
 																			.getElementById('picture');
-																	/*  picture.innerHTML = '<p>test!</p>' */
-																	//  alert(response.height);
 																	picture.innerHTML = '<img src="resources/out.gif" height="'+response.height+'" width="'+response.width+'"/>'
 																},
 																error : function(
