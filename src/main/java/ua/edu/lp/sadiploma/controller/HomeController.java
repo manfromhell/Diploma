@@ -154,4 +154,18 @@ public class HomeController {
 		PictureSize pictureSize = proba.generatePicture(parentCode);
 		return pictureSize;
 	}
+	
+	@RequestMapping(value="/picture/{id}", method=RequestMethod.GET)
+	public String getResultTree(@PathVariable(value="id") Long id, Model model, HttpServletRequest httpServletRequest){
+		System.err.println("Output id: "+id);
+		OutputData out = outputDataService.findById(id);
+		System.err.println("OutputData: "+out);
+		String marks = out.getResultNumbers();
+		System.err.println("Marks: "+marks);
+		Proba proba = new Proba(httpServletRequest.getSession().getServletContext().getRealPath("/"));
+		PictureSize pictureSize = proba.getPicFromMarks(marks);
+		model.addAttribute("picture", pictureSize);
+		return "result_tree";
+	}
+	
 }

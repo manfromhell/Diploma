@@ -17,10 +17,54 @@ public class Proba {
 		System.err.println("proba path "+realPath);
 		this.TMP_PATH = realPath;
 	}
+	
+	public PictureSize getPicFromMarks(String marks){
+		String[] marksStrArr = marks.split("[\\D]+");
+		int[] marksArr = new int[marksStrArr.length];
+		for (int i = 0; i < marksStrArr.length; i++) {
+			marksArr[i] = Integer.parseInt(marksStrArr[i]);
+		}
+		GraphViz gv = new GraphViz(TMP_PATH);
+		gv.addln(gv.start_graph());
+		for (int i = 0; i < marksArr.length-2; i++) {
+			gv.addln(marksArr[i] + " -- " + marksArr[i+1]);
+			System.err.println("Line added: " + marksArr[i] + " -- "
+					+ marksArr[i+1]);
+		}
+		gv.addln(marksArr[marksArr.length-2] + " -- " + marksArr[marksArr.length-1]);
+		gv.addln(gv.end_graph());
+		System.err.println(gv.getDotSource());
+		String type = "gif";
+		System.err.println("abs path " + new File(TMP_PATH).getAbsolutePath());
+		System.err.println(new File(TMP_PATH).getAbsolutePath());
+		// C:\\apache-tomcat-7.0.54\\wtpwebapps\\Diploma\\
+		File out = new File(TMP_PATH+"resources\\outmarks." + type); // Windows
+		System.err.println("FILE:  "+out.getAbsoluteFile());
+		gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type), out);
+		System.err.println("gv.getDotSource(): "+gv.getDotSource());
+		byte[] img = gv.getGraph(gv.getDotSource(), type);
+        System.err.println("img length: "+img.length);
+		InputStream in = new ByteArrayInputStream(img);
+		int height = 0;
+		int width = 0;
+		try {
+			BufferedImage buf = ImageIO.read(in);
+			height = buf.getHeight();
+			width = buf.getWidth();
+			System.err.println("IMG height: " + height);
+			System.err.println("IMG width: " + width);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		PictureSize pictureSize = new PictureSize();
+		pictureSize.setHeight(height);
+		pictureSize.setWidth(width);
+		return pictureSize;
+
+	}
 
 	public PictureSize generatePicture(String parentCode) {
 		String[] parentCodeArr = parentCode.split("[\\D]+");
-		System.err.println(Arrays.toString(parentCodeArr));
 		int[] parentCodeArr2 = new int[parentCodeArr.length];
 		int[] nodeNumbers = new int[parentCodeArr.length];
 		for (int i = 0; i < nodeNumbers.length; i++) {

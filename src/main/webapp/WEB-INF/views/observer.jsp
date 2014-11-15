@@ -19,6 +19,33 @@
 					$('table').colResizable({ disable : true });
 					$('#resizable').resizable();
 				})
+				$('#getPic')
+										.click(
+												function() {
+													var parentCode = $(
+															'#parentCodeO')
+															.val();
+													var marks = $('#marks').val();
+													$
+															.ajax({
+																type : "Get",
+																url : "getPic",
+																data : "marks="+marks,
+																success : function(
+																		response) {
+																var picture = document
+																	.getElementById('thedialog');
+																	picture.innerHTML = '<img src="resources/outmarks.gif" height="'+response.height+'" width="'+response.width+'"/>'
+																	$('div#thedialog').dialog('open');
+																},
+																error : function(
+																		e) {
+																	alert('Error: '
+																			+ e);
+																}
+															});
+												})
+												$('div#thedialog').dialog({ autoOpen: false })
 			})
 		</script>
 
@@ -105,18 +132,22 @@
 					<tr>
 						<td class="cellRed"><a href="info/${output.id}">${output.inputData.treeType}</a></td>
 						<td class="cellRed">${output.inputData.numberOfNodes}</td>
-						<td class="cellRed">${output.inputData.parentCode}</td>
+						<td class="cellRed" id="parentCodeO">${output.inputData.parentCode}</td>
 						<td class="cellRed">${output.inputData.comment}</td>
 
 						<td class="cellBlue"><fmt:formatDate value="${output.startTime}" pattern="dd.MM.yyyy HH:mm:ss" /></td>
 						<td class="cellBlue"><fmt:formatDate value="${output.finishTime}" pattern="dd.MM.yyyy HH:mm:ss" /></td>
-						<td class="cellBlue">${output.resultNumbers}</td>
+						<td class="cellBlue"><a href="picture/${output.id}">${output.resultNumbers}</a></td>
 						<td class="cellBlue">${output.solutionEnergy}</td>
 						<td class="cellBlue">${output.fitness}</td>
 					</tr>
 				</c:forEach>
 				</tbody>
 			</table>
+			<a href="#" id="getPic"> GET PICTURE</a>
 		</c:if>
+		<div id="thedialog" title="Download complete">
+    <img src="image.ico" height="100" width="100"/>
+</div>
 	</tiles:putAttribute>
 </tiles:insertDefinition>
