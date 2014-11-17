@@ -5,7 +5,6 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.Arrays;
 
 import javax.imageio.ImageIO;
 
@@ -18,20 +17,30 @@ public class Proba {
 		this.TMP_PATH = realPath;
 	}
 	
-	public PictureSize getPicFromMarks(String marks){
+//	public static void main(String[] args) {
+//		Proba proba = new Proba("C:\\apache-tomcat-7.0.54\\wtpwebapps\\Diploma\\");
+//		proba.getPicFromMarks("0,1,2,3,4", "11,22,33,44,55");
+//	}
+	
+	public PictureSize getPicFromMarks(String parentCode, String marks){
+		String[] parentCodeArray = parentCode.split("[\\D]+");
+		int[] intParentCode = new int[parentCode.length()];
+
 		String[] marksStrArr = marks.split("[\\D]+");
 		int[] marksArr = new int[marksStrArr.length];
-		for (int i = 0; i < marksStrArr.length; i++) {
+
+		for (int i = 0; i < parentCodeArray.length; i++) {
+			intParentCode[i] = Integer.parseInt(parentCodeArray[i]);
 			marksArr[i] = Integer.parseInt(marksStrArr[i]);
 		}
+
 		GraphViz gv = new GraphViz(TMP_PATH);
 		gv.addln(gv.start_graph());
-		for (int i = 0; i < marksArr.length-2; i++) {
-			gv.addln(marksArr[i] + " -- " + marksArr[i+1]);
-			System.err.println("Line added: " + marksArr[i] + " -- "
-					+ marksArr[i+1]);
+		for (int i = 1; i < marksArr.length; i++) {
+			gv.addln(marksArr[intParentCode[i]-1] + " -- " + marksArr[i]);
+			System.err.println("Line added: " + marksArr[intParentCode[i]-1] + " -- " + marksArr[i]);
 		}
-		gv.addln(marksArr[marksArr.length-2] + " -- " + marksArr[marksArr.length-1]);
+		//gv.addln(marksArr[marksArr.length-2] + " -- " + marksArr[marksArr.length-1]);
 		gv.addln(gv.end_graph());
 		System.err.println(gv.getDotSource());
 		String type = "gif";

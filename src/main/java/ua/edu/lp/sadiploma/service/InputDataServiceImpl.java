@@ -1,7 +1,6 @@
 package ua.edu.lp.sadiploma.service;
 
 import java.util.List;
-import java.util.ResourceBundle;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -163,7 +163,7 @@ public class HomeController {
 		String marks = out.getResultNumbers();
 		System.err.println("Marks: "+marks);
 		Proba proba = new Proba(httpServletRequest.getSession().getServletContext().getRealPath("/"));
-		PictureSize pictureSize = proba.getPicFromMarks(marks);
+		PictureSize pictureSize = proba.getPicFromMarks(out.getInputData().getParentCode(), marks);
 		model.addAttribute("picture", pictureSize);
 		return "result_tree";
 	}
