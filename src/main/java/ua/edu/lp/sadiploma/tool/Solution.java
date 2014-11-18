@@ -1,8 +1,10 @@
 package ua.edu.lp.sadiploma.tool;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 public class Solution {
 	private double GAPS_KOEF;
@@ -137,8 +139,8 @@ public class Solution {
 	}
 
 	public int getFitness() {
-		List<Integer> list = bundle.generateCombinations();
-		for (int i = 1; i < bundle.getDataLength() ; i++) {
+		Set<Integer> list = new HashSet<Integer>(bundle.generateCombinations());
+		for (int i = 1; i < list.size() ; i++) {
 			if (!list.contains(i)) {
 				return i-1;
 			}

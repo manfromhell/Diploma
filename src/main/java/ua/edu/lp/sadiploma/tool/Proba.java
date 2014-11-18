@@ -5,26 +5,30 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Arrays;
 
 import javax.imageio.ImageIO;
+
+import org.eclipse.jetty.util.log.Log;
 
 public class Proba {
 
 	private String TMP_PATH;
 
 	public Proba(String realPath) {
-		System.err.println("proba path "+realPath);
+		System.err.println("proba path " + realPath);
 		this.TMP_PATH = realPath;
 	}
-	
-//	public static void main(String[] args) {
-//		Proba proba = new Proba("C:\\apache-tomcat-7.0.54\\wtpwebapps\\Diploma\\");
-//		proba.getPicFromMarks("0,1,2,3,4", "11,22,33,44,55");
-//	}
-	
-	public PictureSize getPicFromMarks(String parentCode, String marks){
+
+	// public static void main(String[] args) {
+	// Proba proba = new Proba(
+	// "C:\\apache-tomcat-7.0.54\\wtpwebapps\\Diploma\\");
+	// proba.getPicFromMarks("0,1,1,1,4,4", "1,6,1,9,2,2");
+	// }
+
+	public PictureSize getPicFromMarks(String parentCode, String marks) {
 		String[] parentCodeArray = parentCode.split("[\\D]+");
-		int[] intParentCode = new int[parentCode.length()];
+		int[] intParentCode = new int[parentCodeArray.length];
 
 		String[] marksStrArr = marks.split("[\\D]+");
 		int[] marksArr = new int[marksStrArr.length];
@@ -36,23 +40,36 @@ public class Proba {
 
 		GraphViz gv = new GraphViz(TMP_PATH);
 		gv.addln(gv.start_graph());
-		for (int i = 1; i < marksArr.length; i++) {
-			gv.addln(marksArr[intParentCode[i]-1] + " -- " + marksArr[i]);
-			System.err.println("Line added: " + marksArr[intParentCode[i]-1] + " -- " + marksArr[i]);
+		System.err.println("parentcode: " + Arrays.toString(intParentCode));
+		System.err.println("marks: " + Arrays.toString(marksArr));
+		for (int i = 0; i < marksArr.length; i++) {
+			System.err.println(String.format("%d [label = %d]", i + 1,
+					marksArr[i]));
+			gv.addln(String.format("%d [label = %d]", i + 1, marksArr[i]));
 		}
-		//gv.addln(marksArr[marksArr.length-2] + " -- " + marksArr[marksArr.length-1]);
+		for (int i = 1; i < marksArr.length; i++) {
+			gv.addln(String.format("%d -- %d", // [taillabel = %d headlabel =
+												// %d]
+					intParentCode[i], i + 1)); // , marksArr[intParentCode[i] -
+												// 1], marksArr[i]
+			// System.err.println("Line added: " + marksArr[intParentCode[i] -
+			// 1]
+			// + " -- " + marksArr[i]);
+		}
+		// gv.addln(marksArr[marksArr.length-2] + " -- " +
+		// marksArr[marksArr.length-1]);
 		gv.addln(gv.end_graph());
 		System.err.println(gv.getDotSource());
 		String type = "gif";
 		System.err.println("abs path " + new File(TMP_PATH).getAbsolutePath());
 		System.err.println(new File(TMP_PATH).getAbsolutePath());
 		// C:\\apache-tomcat-7.0.54\\wtpwebapps\\Diploma\\
-		File out = new File(TMP_PATH+"resources\\outmarks." + type); // Windows
-		System.err.println("FILE:  "+out.getAbsoluteFile());
+		File out = new File(TMP_PATH + "resources\\outmarks." + type); // Windows
+		System.err.println("FILE:  " + out.getAbsoluteFile());
 		gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type), out);
-		System.err.println("gv.getDotSource(): "+gv.getDotSource());
+		System.err.println("gv.getDotSource(): " + gv.getDotSource());
 		byte[] img = gv.getGraph(gv.getDotSource(), type);
-        System.err.println("img length: "+img.length);
+		System.err.println("img length: " + img.length);
 		InputStream in = new ByteArrayInputStream(img);
 		int height = 0;
 		int width = 0;
@@ -96,12 +113,12 @@ public class Proba {
 		System.err.println("abs path " + new File(TMP_PATH).getAbsolutePath());
 		System.err.println(new File(TMP_PATH).getAbsolutePath());
 		// C:\\apache-tomcat-7.0.54\\wtpwebapps\\Diploma\\
-		File out = new File(TMP_PATH+"resources\\out." + type); // Windows
-		System.err.println("FILE:  "+out.getAbsoluteFile());
+		File out = new File(TMP_PATH + "resources\\out." + type); // Windows
+		System.err.println("FILE:  " + out.getAbsoluteFile());
 		gv.writeGraphToFile(gv.getGraph(gv.getDotSource(), type), out);
-		System.err.println("gv.getDotSource(): "+gv.getDotSource());
+		System.err.println("gv.getDotSource(): " + gv.getDotSource());
 		byte[] img = gv.getGraph(gv.getDotSource(), type);
-        System.err.println("img length: "+img.length);
+		System.err.println("img length: " + img.length);
 		InputStream in = new ByteArrayInputStream(img);
 		int height = 0;
 		int width = 0;

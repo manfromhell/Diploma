@@ -14,7 +14,7 @@
 						class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand"
-					href="<spring:url value="/main" htmlEscape="true"/>"><spring:message code="label.title" /></a>
+					href="<spring:url value="/main" htmlEscape="true"/>"><spring:message code="label.title" /><img alt="" src="/SADiploma/resources/favicon.ico"></a>
 			</div>
 			<div class="navbar-collapse collapse">
 				<ul class="nav navbar-nav">
