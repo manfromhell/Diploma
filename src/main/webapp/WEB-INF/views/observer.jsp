@@ -106,24 +106,24 @@
 				class="table table-bordered table-hover table-striped sortable resizable" width="100%">
 				<thead>
 				<tr>
-					<th style="font-size: 75%; background-color: red;"><spring:message
+					<th style="font-size: 75%; background-color: red; color:white;"><spring:message
 							code="label.treeType" /></th>
-					<th style="font-size: 75%; background-color: red;"><spring:message
+					<th style="font-size: 75%; background-color: red;color:white;"><spring:message
 							code="label.numberOfNodes" /></th>
-					<th style="font-size: 75%; background-color: red;"><spring:message
+					<th style="font-size: 75%; background-color: red;color:white;"><spring:message
 							code="label.parentCode" /></th>
-					<th style="font-size: 75%; background-color: red;"><spring:message
+					<th style="font-size: 75%; background-color: red;color:white;"><spring:message
 							code="label.comment" /></th>
 
-					<th style="font-size: 75%; background-color: blue;"><spring:message
+					<th style="font-size: 75%; background-color: blue;color:white;"><spring:message
 							code="label.startTime" /></th>
-					<th style="font-size: 75%; background-color: blue;"><spring:message
+					<th style="font-size: 75%; background-color: blue;color:white;"><spring:message
 							code="label.finishTime" /></th>
-					<th style="font-size: 100%; background-color: magenta;"><spring:message
+					<th style="font-size: 100%; background-color: magenta;color:white;"><spring:message
 							code="label.resultMarks" /></th>
-					<th style="font-size: 75%; background-color: blue;"><spring:message
+					<th style="font-size: 75%; background-color: blue;color:white;"><spring:message
 							code="label.energy" /></th>
-					<th style="font-size: 75%; background-color: blue;"><spring:message
+					<th style="font-size: 75%; background-color: blue;color:white;"><spring:message
 							code="label.fitness" /></th>
 				</tr>
 				</thead>

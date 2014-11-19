@@ -1,6 +1,7 @@
 package ua.edu.lp.sadiploma.tool;
 
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -80,9 +81,9 @@ public class SimAnnealing implements Runnable {
 				log.info("comb: "
 						+ bestSolution.getBundle()
 						+ " size "
-						+ bestSolution.getBundle().generateCombinations()
-								.size() + "new energy: "
-						+ bestSolution.getSolutionEnergy());
+						+ new HashSet<Integer>(bestSolution.getBundle()
+								.generateCombinations()).size()
+						+ "new energy: " + bestSolution.getSolutionEnergy());
 			} else {
 				currentSolution.setSolution(bestSolution);
 			}
@@ -92,21 +93,24 @@ public class SimAnnealing implements Runnable {
 
 		entity.setIterationsCount(iterations);
 		entity.setFitness(bestSolution.getFitness());
-		List<Integer> allValues = bestSolution.getBundle().getData().getAllValues();
+		List<Integer> allValues = bestSolution.getBundle().getData()
+				.getAllValues();
 		StringBuilder resultNumbers = new StringBuilder();
-		for ( int i = 0; i < allValues.size() ; i++) {
+		for (int i = 0; i < allValues.size(); i++) {
 			resultNumbers.append(allValues.get(i));
-			if (i < allValues.size()-1) {
+			if (i < allValues.size() - 1) {
 				resultNumbers.append(", ");
 			}
 		}
 		entity.setResultNumbers(resultNumbers.toString());
 		entity.setFinishTime(new Date(System.currentTimeMillis()));
-		entity.setCombinationsCount(bestSolution.getBundle()
-				.generateCombinations().size());
-		log.info("comb: " + bestSolution.getBundle().generateCombinations()
+		entity.setCombinationsCount(new HashSet<Integer>(bestSolution
+				.getBundle().generateCombinations()).size());
+		log.info("comb: "
+				+ bestSolution.getBundle().generateCombinations()
 				+ " size "
-				+ bestSolution.getBundle().generateCombinations().size());
+				+ new HashSet<Integer>(bestSolution.getBundle()
+						.generateCombinations()).size());
 		entity.setSolutionEnergy(bestSolution.getSolutionEnergy());
 		dataService.create(entity);
 	}
