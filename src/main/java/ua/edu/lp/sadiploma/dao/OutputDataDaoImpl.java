@@ -23,7 +23,10 @@ public class OutputDataDaoImpl extends GenericDaoImpl<OutputData> implements
 
 	public List<OutputData> filterOutput(int numberOfNodesFrom,
 			int numberOfNodesTo, String comment, Date startTimeFrom,
-			Date startTimeTo, Date finishTimeFrom, Date finishTimeTo) {
+			Date startTimeTo, Date finishTimeFrom, Date finishTimeTo, String request) {
+		if ((request != null) && (request != "")) {
+			return executeRequest(request);
+		}
 		CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<OutputData> query = criteriaBuilder
 				.createQuery(OutputData.class);
@@ -79,7 +82,6 @@ public class OutputDataDaoImpl extends GenericDaoImpl<OutputData> implements
 		return query2.getResultList();
 	}
 
-	@Override
 	public List<OutputData> executeRequest(String request) {
 		Query query = entityManager
 				.createNativeQuery(request, OutputData.class);

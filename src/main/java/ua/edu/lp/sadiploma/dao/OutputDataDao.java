@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 import ua.edu.lp.sadiploma.entity.OutputData;
 @Component
 public interface OutputDataDao extends GenericDao<OutputData> {
-	List<OutputData> filterOutput(int numberOfNodesFrom, int numberOfNodesTo, String comment, Date startTimeFrom, Date startTimeTo, Date finishTimeFrom, Date finishTimeTo );
-	List<OutputData> executeRequest(String request);
+	List<OutputData> filterOutput(int numberOfNodesFrom, int numberOfNodesTo, String comment, Date startTimeFrom, Date startTimeTo, Date finishTimeFrom, Date finishTimeTo, String query);
 
 }

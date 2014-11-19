@@ -86,7 +86,7 @@
 					<td><spring:message code="label.numberOfNodes" /></td>
 					<td><input type="number" min="1" value="1"
 						name="numberOfNodesFrom" style="width: 90px" /> -- <input
-						type="number" size="10" min="1" value="7" name="numberOfNodesTo"
+						type="number" size="10" min="1" value="20" name="numberOfNodesTo"
 						style="width: 90px" /></td>
 
 

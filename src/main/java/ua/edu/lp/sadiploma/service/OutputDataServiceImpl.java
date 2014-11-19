@@ -52,14 +52,8 @@ public class OutputDataServiceImpl implements OutputDataService {
 	@Override
 	public List<OutputData> filterOutput(int numberOfNodesFrom,
 			int numberOfNodesTo, String comment, Date startTimeFrom,
-			Date startTimeTo, Date finishTimeFrom, Date finishTimeTo) {
-		return outputDataDao.filterOutput(numberOfNodesFrom, numberOfNodesTo, comment, startTimeFrom, startTimeTo, finishTimeFrom, finishTimeTo);
+			Date startTimeTo, Date finishTimeFrom, Date finishTimeTo, String query) {
+		return outputDataDao.filterOutput(numberOfNodesFrom, numberOfNodesTo, comment, startTimeFrom, startTimeTo, finishTimeFrom, finishTimeTo, query);
 	}
-
-	@Override
-	public List<OutputData> executeRequest(String request) {
-		return outputDataDao.executeRequest(request);
-	}
-
 
 }

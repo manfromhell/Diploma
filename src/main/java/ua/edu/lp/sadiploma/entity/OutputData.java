@@ -150,4 +150,112 @@ public class OutputData {
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
+	@Override
+	public String toString() {
+		return "OutputData [startTime=" + startTime + ", finishTime="
+				+ finishTime + ", resultNumbers=" + resultNumbers
+				+ ", solutionEnergy=" + solutionEnergy + ", iterationsCount="
+				+ iterationsCount + ", combinationsCount=" + combinationsCount
+				+ ", fitness=" + fitness + ", id=" + id + ", created="
+				+ created + "]";
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime
+				* result
+				+ ((combinationsCount == null) ? 0 : combinationsCount
+						.hashCode());
+		result = prime * result + ((created == null) ? 0 : created.hashCode());
+		result = prime * result
+				+ ((finishTime == null) ? 0 : finishTime.hashCode());
+		result = prime * result + ((fitness == null) ? 0 : fitness.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result
+				+ ((inputData == null) ? 0 : inputData.hashCode());
+		result = prime * result
+				+ ((iterationsCount == null) ? 0 : iterationsCount.hashCode());
+		result = prime * result
+				+ ((resultNumbers == null) ? 0 : resultNumbers.hashCode());
+		result = prime * result
+				+ ((solutionEnergy == null) ? 0 : solutionEnergy.hashCode());
+		result = prime * result
+				+ ((startTime == null) ? 0 : startTime.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		OutputData other = (OutputData) obj;
+		if (combinationsCount == null) {
+			if (other.combinationsCount != null)
+				return false;
+		} else if (!combinationsCount.equals(other.combinationsCount))
+			return false;
+		if (created == null) {
+			if (other.created != null)
+				return false;
+		} else if (!created.equals(other.created))
+			return false;
+		if (finishTime == null) {
+			if (other.finishTime != null)
+				return false;
+		} else if (!finishTime.equals(other.finishTime))
+			return false;
+		if (fitness == null) {
+			if (other.fitness != null)
+				return false;
+		} else if (!fitness.equals(other.fitness))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (inputData == null) {
+			if (other.inputData != null)
+				return false;
+		} else if (!inputData.equals(other.inputData))
+			return false;
+		if (iterationsCount == null) {
+			if (other.iterationsCount != null)
+				return false;
+		} else if (!iterationsCount.equals(other.iterationsCount))
+			return false;
+		if (resultNumbers == null) {
+			if (other.resultNumbers != null)
+				return false;
+		} else if (!resultNumbers.equals(other.resultNumbers))
+			return false;
+		if (solutionEnergy == null) {
+			if (other.solutionEnergy != null)
+				return false;
+		} else if (!solutionEnergy.equals(other.solutionEnergy))
+			return false;
+		if (startTime == null) {
+			if (other.startTime != null)
+				return false;
+		} else if (!startTime.equals(other.startTime))
+			return false;
+		return true;
+	}
+	
 }

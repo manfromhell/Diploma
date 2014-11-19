@@ -91,7 +91,7 @@ public class HomeController {
 			@RequestParam(value = "startTimeTo") String startTimeTo,
 			@RequestParam(value = "finishTimeFrom") String finishTimeFrom,
 			@RequestParam(value = "finishTimeTo") String finishTimeTo,
-			Model model) {
+			@RequestParam(value="query") String query, Model model) {
 		System.err.println("Parent code: "+parentCode);
 		System.err.println("Number of nodes from: "+numberOfNodesFrom);
 		System.err.println("Number of nodes to: "+numberOfNodesTo);
@@ -117,20 +117,12 @@ public class HomeController {
 		System.err.println("Start time from d : "+startTimeFromDate);
 		System.err.println("Start time to d : "+startTimeToDate);
 		
-		List<OutputData> result = outputDataService.filterOutput(numberOfNodesFrom, numberOfNodesTo, comment, startTimeFromDate, startTimeToDate, finishTimeFromDate, finishTimeToDate);
+		List<OutputData> result = outputDataService.filterOutput(numberOfNodesFrom, numberOfNodesTo, comment, startTimeFromDate, startTimeToDate, finishTimeFromDate, finishTimeToDate, query);
 		System.err.println("Result of filtering!!!: "+result.toString());
 		model.addAttribute("outputList",result);
 		return "observer";
 	}
 	
-	@RequestMapping(value="/request", method=RequestMethod.GET)
-	public String executeQuery(@RequestParam(value="query") String query, Model model){
-		List<OutputData> result = outputDataService.executeRequest(query);
-		System.err.println("Result of request!!!: "+result.toString());
-		model.addAttribute("outputList",result);
-		return "observer";
-	}
-
 	@RequestMapping(value="/info/{id}", method=RequestMethod.GET)
 	public String info(@PathVariable(value="id") Long id, Model model){
 		OutputData result = outputDataService.findById(id);
