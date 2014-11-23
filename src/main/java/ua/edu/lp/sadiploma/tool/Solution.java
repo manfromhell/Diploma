@@ -1,6 +1,7 @@
 package ua.edu.lp.sadiploma.tool;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
@@ -87,8 +88,8 @@ public class Solution {
 					- (tmpBundle.getDataSum() / 2) + 1;
 			tmpBundle.setData(x, this.bundle.getData(x).getValue()
 					- randomValue);
-		} while (tmpBundle.hasNegatives());
-		this.bundle = (Bundle) tmpBundle.clone();
+		} while ((tmpBundle.hasNegatives()) || (!tmpBundle.hasOnes()));
+		this.bundle = tmpBundle.clone();
 
 		return;
 	}
@@ -139,6 +140,14 @@ public class Solution {
 	}
 
 	public int getFitness() {
+		return this.REP_KOEF == 1 ? getFitnessL() : getFitnessG();
+	}
+
+	private Integer getFitnessG() {
+		return Collections.max(bundle.generateCombinations());
+	}
+
+	private int getFitnessL() {
 		Set<Integer> list = new HashSet<Integer>(bundle.generateCombinations());
 		for (int i = 1; i < list.size() ; i++) {
 			if (!list.contains(i)) {
@@ -203,6 +212,16 @@ public class Solution {
 	 */
 	public void setREP_KOEF(double rEP_KOEF) {
 		REP_KOEF = rEP_KOEF;
+	}
+
+	public static void main(String[] args) {
+		
+	}
+	
+	public Solution getSolutionByMarks(String parentCode, String marks) {
+		Solution solution = new Solution(new Node());
+		
+		return solution;
 	}
 
 }
