@@ -214,14 +214,4 @@ public class Solution {
 		REP_KOEF = rEP_KOEF;
 	}
 
-	public static void main(String[] args) {
-		
-	}
-	
-	public Solution getSolutionByMarks(String parentCode, String marks) {
-		Solution solution = new Solution(new Node());
-		
-		return solution;
-	}
-
 }

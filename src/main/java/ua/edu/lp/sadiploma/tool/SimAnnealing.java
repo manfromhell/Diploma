@@ -113,6 +113,7 @@ public class SimAnnealing implements Runnable {
 						.generateCombinations()).size());
 		entity.setSolutionEnergy(bestSolution.getSolutionEnergy());
 		dataService.create(entity);
+		Thread.currentThread().interrupt();
 	}
 
 	/**
@@ -129,5 +130,4 @@ public class SimAnnealing implements Runnable {
 	public void setBestSolution(Solution bestSolution) {
 		this.bestSolution = bestSolution;
 	}
-
 }

@@ -191,6 +191,25 @@ public class Node implements Component {
 		return root;
 	}
 
+	public static Component generateTreeWithMarks(String parentCode, String marks) {
+		String[] parentCodeArray = parentCode.split("[\\D]+");
+		List<Integer> intParentCode = new ArrayList<Integer>();
+		String[] marksArray = marks.split("[\\D]+");
+		int[] dataArrayInt = new int[parentCodeArray.length];
+	
+		for (int i = 0; i < parentCodeArray.length; i++) {
+			intParentCode.add(Integer.parseInt(parentCodeArray[i]));
+			dataArrayInt[i] = Integer.parseInt(marksArray[i]);
+		}
+		Component root = new Node(dataArrayInt[0]);
+		root.setParentCode(intParentCode);
+		for (int i = 1; i < dataArrayInt.length; i++) {
+			Component component = root.findComponent(intParentCode.get(i));
+			component.addComponent(new Node(i + 1, dataArrayInt[i], component));
+		}
+		return root;
+	}
+
 	@Override
 	public int getSize() {
 		if (this.components.size() > 0) {

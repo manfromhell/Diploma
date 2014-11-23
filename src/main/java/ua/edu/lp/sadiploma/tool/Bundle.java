@@ -12,7 +12,7 @@ public interface Bundle extends Cloneable{
 	public void setData(int index, int value);
 	public BundleType getBundleType();
 	boolean hasRepeats();
-	Object clone();
+	Bundle clone();
 	boolean hasNegatives();
 	boolean hasOnes();
 	List<Integer> generateCombinations();
