@@ -51,7 +51,7 @@ public class Solution {
 	}
 
 	public double getSolutionEnergy() {
-		return this.solutionEnergy;
+		return computeTargetFunction();
 	}
 
 	/**
@@ -135,7 +135,11 @@ public class Solution {
 
 		// System.out.println("gaps " + gaps + " repeats " + repeats
 		// + " max number " + allNumbers.get(allNumbers.size() - 1));
-		this.solutionEnergy = gaps * GAPS_KOEF + repeats * REP_KOEF; // Complete
+		int fitness = getFitness();
+		if (this.REP_KOEF == 1) {
+			fitness *= -1;
+		}
+		this.solutionEnergy = gaps * GAPS_KOEF + repeats * REP_KOEF + fitness; // Complete
 		return this.solutionEnergy;
 	}
 
@@ -149,9 +153,9 @@ public class Solution {
 
 	private int getFitnessL() {
 		Set<Integer> list = new HashSet<Integer>(bundle.generateCombinations());
-		for (int i = 1; i < list.size() ; i++) {
+		for (int i = 1; i < list.size(); i++) {
 			if (!list.contains(i)) {
-				return i-1;
+				return i - 1;
 			}
 		}
 		return list.size();
