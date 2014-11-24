@@ -17,7 +17,7 @@
 															.val();
 													if (val == -100) {
 														document
-																.getElementById('textInputG').value = 100;
+																.getElementById('textInputG').value = 1000;
 														document
 																.getElementById('textInputR').value = 1;
 													}
@@ -31,7 +31,7 @@
 														document
 																.getElementById('textInputG').value = 1;
 														document
-																.getElementById('textInputR').value = 100;
+																.getElementById('textInputR').value = 1000;
 													}
 												})
 
@@ -90,7 +90,7 @@
 				<spring:message code="label.repeatsCoef" />
 			</form:label>
 			<form:input path="repCoef" class="form-field" type="text"
-				id="textInputR" readonly="true" value="100" />
+				id="textInputR" readonly="true" value="1000" />
 			<input value="100" type="range" MIN="-100" MAX="100" STEP="100"
 				id="spinner" />
 			<br>
