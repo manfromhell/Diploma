@@ -135,9 +135,9 @@ public class Solution {
 
 		// System.out.println("gaps " + gaps + " repeats " + repeats
 		// + " max number " + allNumbers.get(allNumbers.size() - 1));
-		int fitness = getFitness();
+		int fitness = 0;
 		if (this.REP_KOEF == 1) {
-			fitness *= -1;
+			fitness = getFitness() * -1;
 		}
 		this.solutionEnergy = gaps * GAPS_KOEF + repeats * REP_KOEF + fitness; // Complete
 		return this.solutionEnergy;

@@ -29,11 +29,11 @@ public class ScheduleService {
 	@Autowired
 	private OutputDataService outputDataService;
 
-	@Scheduled(fixedDelay = 60000)
+	@Scheduled(fixedDelay = 120000)
 	public void checkInputData() {
-		log.info("check db, delay = 1m");
-		List<InputData> list = inputDataService.findUnchecked(2);
-		if (executor.getActiveCount()<=2) {
+		log.info("check db, delay = 2m");
+		if (executor.getActiveCount()<2) {
+			List<InputData> list = inputDataService.findUnchecked(2);
 			for (InputData data : list) {
 
 				ua.edu.lp.sadiploma.tool.Component component = Node
@@ -44,7 +44,9 @@ public class ScheduleService {
 						data.getIterationsPerTemperature(), data.getGapsCoef(),
 						data.getRepCoef());
 
-				SimAnnealing simAnnealing = new SimAnnealing(component, data, inputDataService, outputDataService, config);
+				data.setDone(true);
+				inputDataService.update(data);
+			SimAnnealing simAnnealing = new SimAnnealing(component, data, inputDataService, outputDataService, config);
 				executor.execute(simAnnealing);
 			}
 		}
