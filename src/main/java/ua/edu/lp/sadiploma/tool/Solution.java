@@ -153,7 +153,7 @@ public class Solution {
 
 	private int getFitnessL() {
 		Set<Integer> list = new HashSet<Integer>(bundle.generateCombinations());
-		for (int i = 1; i < list.size(); i++) {
+		for (int i = 1; i <= list.size(); i++) {
 			if (!list.contains(i)) {
 				return i - 1;
 			}
