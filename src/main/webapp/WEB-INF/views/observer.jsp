@@ -106,13 +106,13 @@
 				class="table table-bordered table-hover table-striped sortable resizable" width="100%">
 				<thead>
 				<tr>
-					<th style="font-size: 75%; background-color: #CC66FF; color:white;"><spring:message
+					<th style="font-size: 75%; background-color: #CC99FF; color:white;"><spring:message
 							code="label.treeType" /></th>
-					<th style="font-size: 75%; background-color: #CC66FF;color:white;"><spring:message
+					<th style="font-size: 75%; background-color: #CC99FF;color:white;"><spring:message
 							code="label.numberOfNodes" /></th>
-					<th style="font-size: 75%; background-color: #CC66FF;color:white;"><spring:message
+					<th style="font-size: 75%; background-color: #CC99FF;color:white;"><spring:message
 							code="label.parentCode" /></th>
-					<th style="font-size: 75%; background-color: #CC66FF;color:white;"><spring:message
+					<th style="font-size: 75%; background-color: #CC99FF;color:white;"><spring:message
 							code="label.comment" /></th>
 
 					<th style="font-size: 75%; background-color: #66CCFF;color:white;"><spring:message
